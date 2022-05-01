@@ -1,0 +1,49 @@
+.poster-image {
+  margin-right: 12px;
+  width: 50px;
+}
+
+.poster-image img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.new-queet-container {
+  background: #36393F;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  padding-bottom: 10px;
+  border: 1px solid #B9BBBE;
+  color: #FFFFFF;
+}
+
+.new-queet-flex {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+
+.queet-input-field textarea {
+  resize: none;
+  display: block;
+}
+.new-queet-textarea {
+  width: 35vw;
+}
+
+.new-queet-bottom {
+  justify-content: space-between;
+  display: flex;
+}
+
+.new-queet-bottom button {
+  padding-left: 10px;
+  background: #3f51b5;
+  color: white;
+  height: 36px;
+  width: 70px;
+  text-align: center;
+  vertical-align: middle;
+}

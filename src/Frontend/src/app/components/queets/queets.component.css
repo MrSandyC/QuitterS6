@@ -1,0 +1,63 @@
+.poster-image {
+  margin-right: 12px;
+  width: 50px;
+}
+
+.poster-image img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.queet-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  background-color: #36393F;
+  border-bottom: 1px solid #B9BBBE;
+  color: #FFFFFF;
+}
+
+.queet-user {
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.queet-user a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.queet-user a ::hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.queet-user-tag {
+  color: grey;
+}
+
+.queet-posted-by {
+  display: flex;
+}
+
+.queet-action-icon i {
+  padding-right: 10px;
+}
+
+.queet-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.queet-divider {
+  margin-left: 15vw;
+  width: 55vw;
+  margin-right: 25vw;
+}
+
+.empty-queets {
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,0 +1,33 @@
+<mat-card class="queet-container" *ngFor="let queet of queets">
+  <div class="poster-image" *ngIf="auth.user$ | async as user">
+    <img
+      [src]="queet.user['profileUri']"
+      alt="User's profile picture"
+      class="inline-block rounded-full shadow-lg w-full h-[36px]"
+    />
+  </div>
+  <div>
+    <mat-card-content *ngIf="auth.user$ | async as user">
+      <div class="queet-posted-by">
+        <div class="queet-user">
+          <a href="/{{ queet.user['username'] }}">{{ queet.user.nickname }}</a>
+        </div>
+        <div class="queet-user-tag">@{{ queet.user['username']}}</div>
+        <div class="queet-posted-time"></div>
+      </div>
+      {{ queet.message }}
+    </mat-card-content>
+    <div class="queet-icons">
+      <div class="queet-action-icon" (click)="likeQueet()">
+        <i class="far fa-heart"></i>{{ 0 }}
+      </div>
+      <div class="queet-action-icon" (click)="commentOnQueet()">
+        <i class="far fa-comment"></i>{{ 0 }}
+      </div>
+    </div>
+  </div>
+</mat-card>
+<!-- <mat-divider class="queet-divider"></mat-divider> -->
+<mat-card class="empty-queets" *nfIg="queets?.length === 0">
+  <h1>User hasn't queeted</h1>
+</mat-card>

@@ -1,0 +1,93 @@
+.pannel-expending {
+  width: 50vw;
+}
+
+.profile-container {
+  width: 55vw;
+  justify-content: center;
+  background: #36393F;
+  border: 1px solid #B9BBBE;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  height: fit-content;
+}
+
+.profile-page-picture {
+  border-radius: 50%;
+  margin-top: -5%;
+  width: 95px;
+  height: 95px;
+}
+
+.profile-picture-header {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.profile-page-header button {
+  padding-left: 10px;
+  background: #3f51b5;
+  color: white;
+  height: 36px;
+  width: 85px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.profile-page-header {
+  display: flex;
+}
+
+.profile-info {
+  width: 55vw;
+  border-bottom: 1px solid #B9BBBE;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+
+.profile-info button {
+  margin-right: 56px;
+}
+
+.profile-info img {
+  margin-left: 67px;
+}
+
+.profile-info button {
+  padding-left: 10px;
+  background: #3f51b5;
+  color: white;
+  height: 36px;
+  width: 85px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.profile-banner {
+  width: 54.8vw;
+  height: 205px;
+}
+
+.user-description {
+  padding: 29px;
+  padding-left: 100px;
+}
+
+.user-description a {
+  text-decoration: none;
+  color: #FFFFFF;
+  padding-right: 38px;
+}
+
+.user-description a:hover {
+  text-decoration: underline;
+}
+
+.user-follow-stats {
+  justify-content: space-between;
+}
+
+.user-description-text {
+  width: 500px;
+}

@@ -1,0 +1,42 @@
+<div class="edit-profile-container">
+  <h1 class="edit-display-block">Edit profile</h1>
+  <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
+    <mat-form-field class="edit-profile-distance" appearance="standard">
+      <mat-label class="edit-profile-white">{{ user["username"] }}</mat-label>
+      <!-- <input matInput placeholder="Placeholder" /> -->
+      <input
+        matInput
+        placeholder="{{ user['username'] }}"
+        formControlName="username"
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field class="edit-profile-distance" appearance="standard">
+      <mat-label class="edit-profile-white">Nickname</mat-label>
+      <input
+        matInput
+        value="{{ user['nickname'] }}"
+        formControlName="nickname"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="edit-profile-distance" appearance="standard">
+      <mat-label class="edit-profile-white">Description</mat-label>
+      <textarea
+        matInput
+        placeholder="{{ user['description'] }}"
+        formControlName="description"
+        cdkTextareaAutosize
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="edit-profile-distance" appearance="standard">
+      <mat-label class="edit-profile-white">Location</mat-label>
+      <input
+        matInput
+        placeholder="{{ user['location'] }}"
+        formControlName="location"
+      />
+    </mat-form-field>
+    <button mat-button >Submit</button>
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<div class="profile-container">
+  <img
+    src="../../../assets/53929982-e5497700-404c-11e9-8393-dece0b196c98.png"
+    alt="Profile banner"
+    class="profile-banner"
+  />
+  <div class="profile-info">
+    <div class="profile-picture-header">
+      <img
+        [src]="user['profileUri']"
+        alt="User's profile picture"
+        class="profile-page-picture"
+      />
+      <button
+        mat-button
+        class="btn btn-primary btn-block"
+        (click)="followUser()"
+        *ngIf="user['auth0id'] !== authUser"
+      >
+        Follow
+      </button>
+      <button
+        mat-button
+        class="btn btn-primary btn-block"
+        (click)="redirectToEdit()"
+        *ngIf="user['auth0id'] === authUser"
+      >
+        Edit Profile
+      </button>
+    </div>
+    <div class="user-description">
+      <h2>{{ user["nickname"] }}</h2>
+      <p class="lead text-muted">@{{ user["username"] }}</p>
+      <p class="user-description-text">
+        {{ user["description"] }}
+      </p>
+      <div class="user-follow-stats">
+        <a href="/{{ user['username'] }}">120 Following</a>
+        <a href="/{{ user['username'] }}">120 Following</a>
+      </div>
+    </div>
+  </div>
+  <app-queets [queets]="queets"></app-queets>
+</div>

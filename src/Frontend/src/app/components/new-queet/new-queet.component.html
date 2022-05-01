@@ -1,0 +1,42 @@
+<mat-card class="new-queet-container" *ngIf="auth.user$ | async as user">
+  <form [formGroup]="form" (ngSubmit)="submitQueet()">
+    <div class="new-queet-flex">
+      <div class="poster-image">
+        <img
+          [src]="user.picture"
+          alt="User's profile picture"
+          class="inline-block rounded-full shadow-lg w-full h-[36px]"
+        />
+      </div>
+
+      <div class="queet-input-field">
+        <mat-form-field class="new-queet-textarea">
+          <mat-label>Leave a comment</mat-label>
+          <textarea
+            id="message"
+            class="new-queet-textarea"
+            matInput
+            cdkTextareaAutosize
+            maxlength="144"
+            (input)="calculateValue($event)"
+            cdkAutosizeMinRows="1"
+            placeholder="Ex. This platform is awesome..."
+            formControlName="message"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="new-queet-bottom">
+        <mat-progress-spinner
+          *ngIf="value"
+          class="character-spinner"
+          color="primary"
+          mode="determinate"
+          [value]="value"
+          [diameter]="32"
+        ></mat-progress-spinner>
+        <button mat-flat-button color="primary">Queet it</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

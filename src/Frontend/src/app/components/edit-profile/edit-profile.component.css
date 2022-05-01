@@ -1,0 +1,41 @@
+.edit-profile-white {
+    color: #FFFFFF;
+    padding: 15px
+}
+
+.edit-display-block {
+    display: block;
+}
+
+.edit-profile-distance {
+    margin: 15px;
+}
+
+.edit-profile-container {
+    width: 55vw;
+    justify-content: center;
+    background: #36393F;
+    border: 1px solid #B9BBBE;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    height: fit-content;
+    text-align: center;
+  }
+
+  ::ng-deep input.mat-input-element {
+    color: #FFFFFF;
+  }
+
+  /* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #FFFFFF !important;
+  }
+  
+  /* underline border color on focused */
+  ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+    background-color: #FFFFFF !important;
+  }
+  
+  ::ng-deep .mat-form-field-autofill-control .ng-tns-c86-1 .cdk-text-field-autofill-monitored {
+      color: #FFFFFF !important;
+  }

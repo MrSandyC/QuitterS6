@@ -1,0 +1,70 @@
+<p>register works!</p>
+<div class="register-component">
+  <h2>Register</h2>
+  <mat-stepper #stepper class="register-stepper">
+    <mat-step [stepControl]="accountForm">
+      <form [formGroup]="accountForm">
+        <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">Enter your username and nickname</label></ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label class="register-white">Username</mat-label>
+          <input
+            matInput
+            class="register-white"
+            placeholder="Enter username"
+            formControlName="username"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="register-white">Nickname</mat-label>
+          <input
+            matInput
+            placeholder="Enter nickname"
+            formControlName="nickname"
+            class="register-white"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="optionalForm" label="More information">
+      <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">More information</label></ng-template>
+      <form [formGroup]="optionalForm">
+        <mat-form-field appearance="fill">
+          <mat-label class="register-white">Description</mat-label>
+          <input
+            matInput
+            class="register-white"
+            formControlName="description"
+            placeholder="Programmer by night, sleepy during the day"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="register-white">Location</mat-label>
+          <input
+            matInput
+            class="register-white"
+            formControlName="location"
+            placeholder="Example; The forest"
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">Confirmation</label></ng-template>
+      <p>Submit the information.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="submitUserInformation()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
