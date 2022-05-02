@@ -24,14 +24,15 @@ services:
     restart: unless-stopped
     build:
       context: ./gateway
+      dockerfile: ./dockerfile
+      target: dev
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - DB_HOST=db
       - DB_USERNAME=root
-      - DB_PASSWORD=ROOT
-      - DB_NAME=fontys
+      - DB_PASSWORD=root
   queet-service:
     depends_on: ["gateway"]
     image: queet-service

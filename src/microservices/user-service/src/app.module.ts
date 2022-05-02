@@ -10,7 +10,7 @@ import { UserModule } from './user/user.module';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.MYSQL_HOST,
-      port: 3307,
+      port: 3306,
       username: 'root',
       password: 'root',
       database: 'quitter-user',
