@@ -1,5 +1,10 @@
 # K8S Work in progress
 K8S work in progress
+### 1. Create image registry
+k3d comes with a handy CLI tool to create and manage locally running cluster. In order to share your docker images with this cluster you'll need a image registry. To create this registry run the following command.
+```bash
+k3d registry create kw-r --port 5001
+```
 
 Commands to create cluster
 ```

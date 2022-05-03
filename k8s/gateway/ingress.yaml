@@ -6,10 +6,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /api
+      - path: /gateway
         pathType: Prefix
         backend:
           service:
-            name: api-service
+            name: gateway-service
             port:
               number: 80

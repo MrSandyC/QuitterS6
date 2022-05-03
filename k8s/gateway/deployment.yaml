@@ -1,4 +1,4 @@
-apiVersion: quitter/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gateway
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: localhost:3000/gateway:v0.1
+        image: localhost:4500/gateway:v0.1
         ports:
         - containerPort: 3000
