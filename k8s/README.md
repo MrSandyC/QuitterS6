@@ -25,32 +25,32 @@ Push the project
 docker push localhost:<port>/project:v0.1
 ```
 
-# Deployment
+## Deployment
 Deploy images to the kubernetes cluster with the following command
 ```bash
 kubectl apply -f deployment-file.yml
 ```
 
-# Check deployment status
+## Check deployment status
 Command to check if deployment was succesful
 ```bash
 kubectl get deployment
 ```
 
-# Port forward pods
+## Port forward pods
 Usage of the `kubectl port-forward` command.
 ```bash
 kubectl port-forward [NAME-OF-POD] <Port>
 ```
 
-# Exposing project
+## Exposing project
 This can be done by deploying a kubernetes service for the project.
 Which can be done by the following command;
 ```bash
 kubectl apply -f service.yaml
 ```
 
-# Deploy kubernetes ingress
+## Deploy kubernetes ingress
 The last step is to deploy ingress. This tells kubernetes how to traffic from externally is routed to each and every service.
 ```bash
 kubectl apply -f ingress.yaml
