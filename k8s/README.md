@@ -7,7 +7,8 @@ Commands to create cluster
     --agents 1 \
     --port 9080:80@loadbalancer \
     --registry-use kw-r:7000 \
-    --registry-config registries.yaml```
+    --registry-config registries.yaml
+```
 
 Is cluster running?
 ```
