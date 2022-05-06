@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: follow-service
+  labels:
+    app: follow-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: follow-service
+  template:
+    metadata:
+      labels:
+        app: follow-service
+    spec:
+      containers:
+      - name: follow-service
+        image: localhost:4500/follow-service:v0.1
+        ports:
+        - containerPort: 5000
