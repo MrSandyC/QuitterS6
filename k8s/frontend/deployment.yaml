@@ -1,4 +1,4 @@
-apiVersion: quitter/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: localhost:4200/frontend:v0.1
+        image: localhost:4500/frontend:v0.1
         ports:
         - containerPort: 4200

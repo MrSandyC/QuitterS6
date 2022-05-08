@@ -61,3 +61,7 @@ The last step is to deploy ingress. This tells kubernetes how to traffic from ex
 ```bash
 kubectl apply -f ingress.yaml
 ```
+
+# Current deployment in k8s
+Currently the project has the gateway 'deployed' in the k8s stack. To get this up to standards, I need to add the ingress and service to access them
+from my windows/linux machine.
