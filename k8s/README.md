@@ -74,6 +74,7 @@ The database will need multiple pods:
 - PersistentVolume
 - PersistentVolumeChain
 - Service
+
 In this process we start off by launching the Persistent volume, followed bu the persistent volume chain and the deployment. The last step is to launch the service, once this is done we can check if everything is up and running by running
 ```
 kubectl get pods
