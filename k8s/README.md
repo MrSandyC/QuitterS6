@@ -3,17 +3,12 @@ K8S work in progress
 ### 1. Create image registry
 k3d comes with a handy CLI tool to create and manage locally running cluster. In order to share your docker images with this cluster you'll need a image registry. To create this registry run the following command.
 ```bash
-k3d registry create kw-r --port 5001
+k3d registry create kw-r --port 4500
 ```
 
 Commands to create cluster
 ```
-k3d cluster create kw \
-    --servers 1 \
-    --agents 1 \
-    --port 9080:80@loadbalancer \
-    --registry-use kw-r:7000 \
-    --registry-config registries.yaml
+k3d cluster create kw --servers 1 --agents 1 --port 9080:80@loadbalancer --registry-use kw-r:5000 --registry-config registries.yaml
 ```
 
 Is cluster running?
@@ -65,3 +60,13 @@ kubectl apply -f ingress.yaml
 # Current deployment in k8s
 Currently the project has the gateway 'deployed' in the k8s stack. To get this up to standards, I need to add the ingress and service to access them
 from my windows/linux machine.
+- Frontend deployed, working on getting ingress to work
+
+
+# Troubleshooting
+Is the container not running? Run the following command:
+```
+kubectl get pods
+kubectl describe pods <NAME>
+```
+This returns 

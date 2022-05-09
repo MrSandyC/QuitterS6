@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: localhost:4500/gateway:v0.1
+        image: localhost:7000/gateway:v0.1
         ports:
         - containerPort: 3000
