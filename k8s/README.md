@@ -67,6 +67,18 @@ from my windows/linux machine.
 # Changes to a project
 Changing the project will affect the deployment when the tag is changed, the tag is placed behind the container. For this project I stuck to v0.x.x, current stage: v0.1.x
 
+# Database deployment
+Kubernetes is also able to host a database which can be used to create a cluster that is able to be fully functional. The database can be set to have limited capacity.
+The database will need multiple pods:
+- Deployment
+- PersistentVolume
+- PersistentVolumeChain
+- Service
+In this process we start off by launching the Persistent volume, followed bu the persistent volume chain and the deployment. The last step is to launch the service, once this is done we can check if everything is up and running by running
+```
+kubectl get pods
+```
+If all of this information returns correctly, we succesfully launched a database instance into kubernetes.
 
 # Troubleshooting
 Is the container not running? Run the following command:
