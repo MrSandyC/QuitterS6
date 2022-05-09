@@ -6,7 +6,21 @@ spec:
   rules:
   - http:
       paths:
-      - path: /gateway
+      - path: /user
+        pathType: Prefix
+        backend:
+          service:
+            name: gateway-service
+            port:
+              number: 80
+      - path: /queet
+        pathType: Prefix
+        backend:
+          service:
+            name: gateway-service
+            port:
+              number: 80
+      - path: /follow
         pathType: Prefix
         backend:
           service:

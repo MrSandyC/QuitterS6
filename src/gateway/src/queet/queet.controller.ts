@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthzGuard } from 'src/authz/authz.guard';
 import { AddUserId, GetUserByAuth0Token } from 'src/util';
 
-@Controller('queet')
+@Controller('/gateway/queet')
 export class QueetController {
   constructor(private readonly queetService: QueetService) {}
 
