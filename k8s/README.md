@@ -60,7 +60,12 @@ kubectl apply -f ingress.yaml
 # Current deployment in k8s
 Currently the project has the gateway 'deployed' in the k8s stack. To get this up to standards, I need to add the ingress and service to access them
 from my windows/linux machine.
-- Frontend deployed, working on getting ingress to work
+- Frontend deployed
+- gateway deployed
+
+
+# Changes to a project
+Changing the project will affect the deployment when the tag is changed, the tag is placed behind the container. For this project I stuck to v0.x.x, current stage: v0.1.x
 
 
 # Troubleshooting
