@@ -18,6 +18,9 @@ export class User {
   @Column()
   nickname: string;
 
+  @Column()
+  profileUri: string;
+
   @Column({ nullable: true })
   description: string;
 

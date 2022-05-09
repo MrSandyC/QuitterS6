@@ -15,4 +15,8 @@ export class FollowService {
   unfollowUser(followRequest: NewFollowerRequest) {
     this.followClient.emit('follow:unfollow-user', followRequest);
   }
+
+  fetchFollowers(userId: number) {
+    return this.followClient.send('follow:find-followers-for-user', userId);
+  }
 }

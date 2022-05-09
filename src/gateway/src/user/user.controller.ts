@@ -17,6 +17,7 @@ export class UserController {
 
   @Post()
   registerUser(@Payload() registerUserRequest: RegisterUserRequest) {
+    console.log(registerUserRequest);
     return this.userService.createUser(registerUserRequest);
   }
 
