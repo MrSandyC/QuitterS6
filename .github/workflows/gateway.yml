@@ -6,7 +6,7 @@ name: Gateway CI
 on:
   push:
     paths:
-      - './src/gateway/**'
+      - 'src/gateway/**'
     branches: 
       - development
       - master
