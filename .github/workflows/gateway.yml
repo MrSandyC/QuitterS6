@@ -6,11 +6,11 @@ name: Gateway CI
 on:
   push:
     paths:
-      - './src/gateway'
+      - './src/gateway/**'
     branches: 
       - development
       - master
-      - feat/*
+      - feat/**
   pull_request:
     branches: [ master ]
 
