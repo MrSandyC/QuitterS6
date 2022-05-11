@@ -74,3 +74,4 @@ Nest is [MIT licensed](LICENSE).
 
 ## Gateway server
 Project set up to configure communication the microservices with the frontend.
+New text
