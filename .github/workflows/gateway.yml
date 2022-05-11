@@ -35,7 +35,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        working-directory: ./src/gateway
     - name: Run CI
       working-directory: ./src/gateway
       run: npm ci
