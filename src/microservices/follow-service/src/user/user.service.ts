@@ -24,7 +24,7 @@ export class UserService {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(updateUserDto: UpdateUserDto) {
     return this.userRepository.save(updateUserDto);
   }
 

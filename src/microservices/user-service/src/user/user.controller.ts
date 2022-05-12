@@ -40,7 +40,7 @@ export class UserController {
 
   @MessagePattern('user:update')
   update(@Payload() updateUserDto: UpdateUserDto) {
-    return this.userService.update(updateUserDto.id, updateUserDto);
+    return this.userService.update(updateUserDto);
   }
 
   @MessagePattern('removeUser')

@@ -60,7 +60,7 @@ export class UserService {
       });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(updateUserDto: UpdateUserDto) {
     return this.userRepository.save(updateUserDto);
   }
 
