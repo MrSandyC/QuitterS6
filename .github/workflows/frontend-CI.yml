@@ -44,5 +44,5 @@ jobs:
       run: npm run build --if-present
     - name: Run test
       working-directory: ./src/Frontend
-      run: npm test-headless
+      run: npm run test-headless
     # Disabled due to stuck in chrome binding
