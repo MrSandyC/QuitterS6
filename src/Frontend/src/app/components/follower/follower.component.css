@@ -49,7 +49,7 @@
     color: #FFFFFF;
   }
   
-  .follower-details a ::hover {
+  .follower-details a:hover {
     color: blue;
     text-decoration: underline;
   }
