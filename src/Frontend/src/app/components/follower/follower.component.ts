@@ -13,5 +13,7 @@ export class FollowerComponent implements OnInit {
     console.log(this.route.snapshot.params['username']);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // to be filled with content
+  }
 }
