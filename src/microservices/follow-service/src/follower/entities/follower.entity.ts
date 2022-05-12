@@ -1,4 +1,4 @@
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../../../src/user/entities/user.entity';
 import { Entity, ManyToMany, ManyToOne, Unique } from 'typeorm';
 
 @Unique('following_users', ['follower', 'followee'])
