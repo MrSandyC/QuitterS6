@@ -7,6 +7,8 @@ export class CreateUserDto {
 
   username: string;
 
+  description: string;
+
   role: string;
 
   profileUri: string;
