@@ -28,7 +28,7 @@
   color: #FFFFFF;
 }
 
-.queet-user a ::hover {
+.queet-user a:hover {
   color: blue;
   text-decoration: underline;
 }
@@ -41,7 +41,7 @@
   display: flex;
 }
 
-.queet-action-icon i {
+.queet-action-icon em {
   padding-right: 10px;
 }
 

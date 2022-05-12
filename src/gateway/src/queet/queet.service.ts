@@ -11,8 +11,8 @@ export class QueetService {
     return this.queetClient.emit('queet:post-new', postQueetRequest);
   }
 
-  async findAll() {
-    return await this.queetClient.send('queet:find-all', {});
+  findAll() {
+    return this.queetClient.send('queet:find-all', {});
   }
 
   findOne(id: number) {
