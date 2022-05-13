@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-
+    name: Build stage
     runs-on: ubuntu-latest
     
     defaults:
@@ -45,8 +45,10 @@ jobs:
     
       
   test:
+    needs: [build]
+    name: Test stage
     runs-on: ubuntu-latest
-    needs: build
+    
     defaults:
       run:
         working-directory: './src/microservices/follow-service'
@@ -63,6 +65,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./src/microservices/follow-service/package-lock.json
+    - name: Run CI
+      working-directory: ./src/microservices/follow-service
+      run: npm ci
     - name: Run test
       working-directory: ./src/microservices/follow-service
       run: npm test   
