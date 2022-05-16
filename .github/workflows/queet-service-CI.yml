@@ -9,7 +9,7 @@ on:
       - 'src/microservices/queet-service/**'
     branches: 
       - development
-      - !master
+      - '!master'
       - feat/**
   pull_request:
     branches: [ master ]
