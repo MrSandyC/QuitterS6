@@ -1,4 +1,4 @@
-name: Follow service CI CD
+name: Gateway CI CD
 
 on:
   push:
