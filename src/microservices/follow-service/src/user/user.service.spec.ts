@@ -35,7 +35,7 @@ describe('UserService', () => {
     const newUser: CreateUserDto = {
       description: 'New user registering',
       nickname: 'Test subject',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'Test_Sub',
     };
 
@@ -50,7 +50,7 @@ describe('UserService', () => {
       id: 1,
       description: 'New user registering',
       nickname: 'Test subject',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'Test_Sub',
       followers: [],
       following: [],
@@ -60,7 +60,7 @@ describe('UserService', () => {
       id: 1,
       description: 'New user registering',
       nickname: 'Changed name',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'Test_Sub',
       followers: [],
       following: [],
@@ -76,21 +76,21 @@ describe('UserService', () => {
     const user: CreateUserDto = {
       description: 'New user registering',
       nickname: 'Test subject',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'Test_Sub',
     };
 
-    let user2: CreateUserDto = {
+    const user2: CreateUserDto = {
       description: 'New user registering',
       nickname: 'Changed name',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'user2',
     };
 
-    let user3: CreateUserDto = {
+    const user3: CreateUserDto = {
       description: 'New user registering',
       nickname: 'Changed name',
-      profileUri: 'http://ditisgeenlink.com/image',
+      profileUri: 'https://ditisgeenlink.com/image',
       username: 'user3',
     };
 
