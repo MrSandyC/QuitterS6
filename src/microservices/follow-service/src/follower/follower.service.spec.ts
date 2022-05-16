@@ -28,4 +28,38 @@ describe('FollowerService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('delete() - Remove user', async () => {
+    const user: User = {
+      id: 1,
+      description: 'New user registering',
+      nickname: 'Test subject',
+      profileUri: 'http://ditisgeenlink.com/image',
+      username: 'Test_Sub',
+      followers: [],
+      following: [],
+    };
+
+    const user2: User = {
+      id: 2,
+      description: 'New user registering',
+      nickname: 'Changed name',
+      profileUri: 'http://ditisgeenlink.com/image',
+      username: 'user2',
+      followers: [],
+      following: [],
+    };
+
+    const user3: User = {
+      id: 3,
+      description: 'New user registering',
+      nickname: 'Changed name',
+      profileUri: 'http://ditisgeenlink.com/image',
+      username: 'user3',
+      followers: [],
+      following: [],
+    };
+
+    
+  });
 });
