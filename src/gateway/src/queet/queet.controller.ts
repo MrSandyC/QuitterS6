@@ -17,7 +17,7 @@ export class QueetController {
 
   // @UseGuards(AuthzGuard)
   @Get()
-  async findAll(@GetUserByAuth0Token() auth0token: string) {
+  findAll(@GetUserByAuth0Token() auth0token: string) {
     console.log(auth0token);
     return this.queetService.findAll();
   }

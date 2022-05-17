@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { RegisterUserRequest } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {

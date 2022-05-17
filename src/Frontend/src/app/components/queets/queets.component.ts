@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { first } from 'rxjs';
 import { Queet } from 'src/app/models/queet';
 import { QueetService } from 'src/app/services/queet.service';
 

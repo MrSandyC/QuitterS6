@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { first } from 'rxjs';
@@ -66,6 +66,6 @@ export class EditProfileComponent implements OnInit {
     console.log(this.user);
     this.userService
       .updateUser(this.user)
-      .subscribe(async (result) => await this.router.navigate([`${this.user.username}`]));
+      .subscribe((result) => this.router.navigate([`${this.user.username}`]));
   }
 }

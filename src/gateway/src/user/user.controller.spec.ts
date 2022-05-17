@@ -17,4 +17,10 @@ describe('UserController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      expect(controller.fetchAllUsers).toBe('Hello World!');
+    });
+  });
 });
