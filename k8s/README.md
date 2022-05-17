@@ -87,4 +87,9 @@ Is the container not running? Run the following command:
 kubectl get pods
 kubectl describe pods <NAME>
 ```
-This returns 
+OR
+```
+kubectl logs <POD_NAME>
+```
+This returns logs of the application within pods or the reason the pod has crashed,
+F.e. pod is unable to pull image OR pod is stuck in a crashloop
