@@ -16,13 +16,13 @@ describe('QueetController', () => {
         create: jest.fn(() => []),
         findAll: jest.fn(() => []),
         findOne: jest.fn(() => {
-          undefined;
+          /**/
         }),
         update: jest.fn(() => {
-          undefined;
+          /**/
         }),
         delete: jest.fn(() => {
-          undefined;
+          /**/
         }),
       }),
     };

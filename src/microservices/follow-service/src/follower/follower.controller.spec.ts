@@ -16,9 +16,15 @@ describe('FollowerController', () => {
         create: jest.fn(() => []),
         unfollow: jest.fn(() => []),
         findAll: jest.fn(() => []),
-        findOne: jest.fn(() => {}),
-        update: jest.fn(() => {}),
-        delete: jest.fn(() => {}),
+        findOne: jest.fn(() => {
+          /**/
+        }),
+        update: jest.fn(() => {
+          /**/
+        }),
+        delete: jest.fn(() => {
+          /**/
+        }),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({
