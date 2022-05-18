@@ -5,14 +5,15 @@ import { AppService } from './app.service';
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 
+// TODO: Env file
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.MYSQL_HOST,
+      host: '10.42.1.6',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: 'password',
       database: 'quitter-user',
       entities: [User],
       synchronize: true,

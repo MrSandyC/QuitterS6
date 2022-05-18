@@ -20,9 +20,7 @@ export class UserController {
 
   @MessagePattern('user:check-if-exists')
   findIfUserExistsInDatabase(auth0id: string) {
-    console.log(auth0id);
-    const user = this.userService.findIfUserExists(auth0id);
-    return user;
+    return this.userService.findIfUserExists(auth0id);
   }
 
   @MessagePattern('user:fetch-by-auth0')
@@ -42,7 +40,7 @@ export class UserController {
 
   @MessagePattern('user:update')
   update(@Payload() updateUserDto: UpdateUserDto) {
-    return this.userService.update(updateUserDto.id, updateUserDto);
+    return this.userService.update(updateUserDto);
   }
 
   @MessagePattern('removeUser')

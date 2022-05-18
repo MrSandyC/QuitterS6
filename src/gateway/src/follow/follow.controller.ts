@@ -18,8 +18,8 @@ export class FollowController {
     return this.followService.unfollowUser(followRequest);
   }
 
-  @Get('followers')
-  fetchFollowers(@Payload() userId: number) {
-    return this.followService.fetchFollowers(userId);
+  @Get('/followers')
+  fetchFollowers(@Payload() id: number) {
+    return this.followService.fetchFollowers(id);
   }
 }
