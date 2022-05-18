@@ -11,11 +11,11 @@ import { User } from './user/entities/user.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '10.42.1.6',
-      port: 3306,
-      username: 'root',
-      password: 'password',
-      database: 'quitter-follow',
+      host: process.env.MYSQL_HOST,
+      port: parseInt(process.env.MYSQL_PORT),
+      username: process.env.mysql_username,
+      password: process.env.mysql_password,
+      database: process.env.database,
       entities: [User],
       synchronize: true,
     }),
