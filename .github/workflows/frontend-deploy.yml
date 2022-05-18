@@ -83,7 +83,7 @@ jobs:
       id: fixsemver
       run: |
         VERSION=${{ steps.gitversion.outputs.VERSION }}
-        FIXED_SEMVER=${VERSION##*kwetter-kweet-service-}
+        FIXED_SEMVER=${VERSION##*quitter-queet-service-}
         echo "::set-output name=SEMVER::${FIXED_SEMVER}"
         echo "${FIXED_SEMVER}"
 
