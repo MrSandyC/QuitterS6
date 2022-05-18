@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: queet-service-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /queet-service
+        pathType: Prefix
+        backend:
+          service:
+            name: queet-service
+            port:
+              number: 80

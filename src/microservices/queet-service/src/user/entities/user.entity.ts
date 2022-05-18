@@ -1,4 +1,4 @@
-import { Queet } from 'src/queet/entities/queet.entity';
+import { Queet } from '../../queet/entities/queet.entity';
 import {
   Column,
   CreateDateColumn,

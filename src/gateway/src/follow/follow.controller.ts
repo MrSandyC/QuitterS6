@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { Payload } from '@nestjs/microservices';
 import { NewFollowerRequest } from './dto/new-follow.dto';
 import { FollowService } from './follow.service';
@@ -16,5 +16,10 @@ export class FollowController {
   @Post('/unfollow')
   unfollowUser(@Payload() followRequest: NewFollowerRequest) {
     return this.followService.unfollowUser(followRequest);
+  }
+
+  @Get('/followers')
+  fetchFollowers(@Payload() id: number) {
+    return this.followService.fetchFollowers(id);
   }
 }

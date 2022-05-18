@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService, User } from '@auth0/auth0-angular';
-import { first, Observable } from 'rxjs';
+import { first } from 'rxjs';
 import { Queet } from 'src/app/models/queet';
 import { QueetService } from 'src/app/services/queet.service';
 

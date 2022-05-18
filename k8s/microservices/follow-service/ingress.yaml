@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: follow-service-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /follow-service
+        pathType: Prefix
+        backend:
+          service:
+            name: follow-service
+            port:
+              number: 80

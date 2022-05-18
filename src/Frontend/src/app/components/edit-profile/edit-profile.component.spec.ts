@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '@auth0/auth0-angular';
 
 import { EditProfileComponent } from './edit-profile.component';
 
@@ -8,6 +10,10 @@ describe('EditProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MatInputModule,
+        AuthService
+      ]
       declarations: [ EditProfileComponent ]
     })
     .compileComponents();

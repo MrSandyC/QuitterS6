@@ -1,7 +1,6 @@
 import {
   Column,
   Entity,
-  JoinColumn,
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
@@ -17,6 +16,9 @@ export class User {
 
   @Column()
   nickname: string;
+
+  @Column()
+  profileUri: string;
 
   @Column({ nullable: true })
   description: string;

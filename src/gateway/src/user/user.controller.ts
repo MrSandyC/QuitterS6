@@ -1,9 +1,7 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { Payload } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
 import { RegisterUserRequest } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -17,6 +15,7 @@ export class UserController {
 
   @Post()
   registerUser(@Payload() registerUserRequest: RegisterUserRequest) {
+    console.log(registerUserRequest);
     return this.userService.createUser(registerUserRequest);
   }
 

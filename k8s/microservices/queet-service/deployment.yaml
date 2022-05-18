@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queet-service
+  labels:
+    app: queet-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: queet-service
+  template:
+    metadata:
+      labels:
+        app: queet-service
+    spec:
+      containers:
+      - name: queet-service
+        image: localhost:5000/queet-service:v0.1.3
+        ports:
+        - containerPort: 5001

@@ -28,6 +28,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FollowerComponent } from './components/follower/follower.component';
 
 // TODO: https://auth0.com/blog/complete-guide-to-angular-user-authentication/#Retrieving-User-Information
 @NgModule({
@@ -43,6 +44,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     NewQueetComponent,
     RegisterComponent,
     EditProfileComponent,
+    FollowerComponent,
   ],
   imports: [
     BrowserModule,

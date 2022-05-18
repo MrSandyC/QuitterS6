@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateFollowerDto } from './dto/create-follower.dto';
 import { UpdateFollowerDto } from './dto/update-follower.dto';
@@ -39,6 +39,21 @@ export class FollowerService {
     const index = user.followers.indexOf(follower);
     user.followers.splice(index);
     return this.followRepository.save(user);
+  }
+
+  async followersByUserId(userId: number) {
+    return this.followRepository.findOne(userId, {
+      relations: ['followers'],
+    });
+  }
+
+  async followingByUserId(userId: number) {
+    return this.followRepository.find({
+      where: {
+        id: userId,
+      },
+      relations: ['following'],
+    });
   }
 
   findAll() {
