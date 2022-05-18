@@ -8,7 +8,7 @@ import { Queet } from './entities/queet.entity';
 import { QueetService } from './queet.service';
 
 class MockQueetService {
-  create(dto: any) {
+  create(_dto: any) {
     return [];
   }
 
@@ -20,15 +20,15 @@ class MockQueetService {
     return [];
   }
 
-  update(id: number, dto: any) {
+  update(_id: number, _dto: any) {
     return [];
   }
 
-  remove(id: number) {
+  remove(_id: number) {
     return [];
   }
 
-  fetchQueetsByProfile(id: number) {
+  fetchQueetsByProfile(_id: number) {
     return [];
   }
 }

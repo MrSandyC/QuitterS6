@@ -6,7 +6,6 @@ import { FollowerModule } from './follower/follower.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
 
-// TODO: env file
 @Module({
   imports: [
     TypeOrmModule.forRoot({

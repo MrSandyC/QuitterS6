@@ -15,9 +15,15 @@ describe('QueetController', () => {
       useFactory: () => ({
         create: jest.fn(() => []),
         findAll: jest.fn(() => []),
-        findOne: jest.fn(() => {}),
-        update: jest.fn(() => {}),
-        delete: jest.fn(() => {}),
+        findOne: jest.fn(() => {
+          undefined;
+        }),
+        update: jest.fn(() => {
+          undefined;
+        }),
+        delete: jest.fn(() => {
+          undefined;
+        }),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({

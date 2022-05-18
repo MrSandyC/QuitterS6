@@ -7,7 +7,6 @@ import { QueetModule } from './queet/queet.module';
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 
-// TODO: env file
 @Module({
   imports: [
     TypeOrmModule.forRoot({

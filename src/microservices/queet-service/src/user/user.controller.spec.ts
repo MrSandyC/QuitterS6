@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserController } from './user.controller';
@@ -15,9 +14,15 @@ describe('UserController', () => {
       useFactory: () => ({
         create: jest.fn(() => []),
         findAll: jest.fn(() => []),
-        findOne: jest.fn(() => {}),
-        update: jest.fn(() => {}),
-        delete: jest.fn(() => {}),
+        findOne: jest.fn(() => {
+          undefined;
+        }),
+        update: jest.fn(() => {
+          undefined;
+        }),
+        delete: jest.fn(() => {
+          undefined;
+        }),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({
@@ -61,11 +66,4 @@ describe('UserController', () => {
     controller.update(dto);
     expect(service.update).toHaveBeenCalled();
   });
-
-  // it('calling remove function', () => {
-  //   const id = 1;
-  //   controller.remove(id);
-  //   expect(service.remove).toHaveBeenCalled();
-  //   expect(service.remove).toHaveBeenCalledWith(id);
-  // });
 });

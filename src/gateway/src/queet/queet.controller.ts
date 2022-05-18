@@ -4,7 +4,7 @@ import { QueetService } from './queet.service';
 import { PostQueetRequest } from './dto/create-queet.dto';
 import { Observable } from 'rxjs';
 import { AuthzGuard } from 'src/authz/authz.guard';
-import { AddUserId, GetUserByAuth0Token } from 'src/util';
+import { GetUserByAuth0Token } from 'src/util';
 
 @Controller('queet')
 export class QueetController {
@@ -18,13 +18,13 @@ export class QueetController {
   // @UseGuards(AuthzGuard)
   @Get()
   findAll(@GetUserByAuth0Token() auth0token: string) {
-    // console.log(auth0token);
+    console.log(auth0token);
     return this.queetService.findAll();
   }
 
-  // @UseGuards(AuthzGuard)
+  @UseGuards(AuthzGuard)
   @Get(':id')
-  findOne(@Payload() id: number, @AddUserId() user: unknown) {
+  findOne(@Payload() id: number) {
     return this.queetService.findOne(id);
   }
 

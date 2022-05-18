@@ -41,9 +41,3 @@ export function QueetByUserProfile() {
   check(res, { 'status was 200': (r) => r.status == 200 });
   sleep(1);
 }
-
-export default function () {
-  const res = http.get('http://localhost:3000/queet/profile/1');
-  check(res, { 'status was 200': (r) => r.status == 200 });
-  sleep(1);
-}

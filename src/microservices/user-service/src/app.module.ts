@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 
-// TODO: Env file
 @Module({
   imports: [
     TypeOrmModule.forRoot({

@@ -8,11 +8,11 @@ import { FollowerService } from './follower.service';
 import { CreateFollowerDto } from './dto/create-follower.dto';
 
 class MockFollowService {
-  create(dto: any) {
+  create(_dto: any) {
     return [];
   }
 
-  unfollowUser(dto: any) {
+  unfollowUser(_dto: any) {
     return [];
   }
 }
