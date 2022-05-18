@@ -60,7 +60,8 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       ".module.ts",
-      "main.ts"
+      "main.ts",
+      "follower.entity.ts"
     ],
     "moduleFileExtensions": [
       "js",

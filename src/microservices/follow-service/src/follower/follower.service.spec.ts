@@ -5,11 +5,27 @@ import { User } from '../user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { UpdateFollowerDto } from './dto/update-follower.dto';
 import { FollowerService } from './follower.service';
+import { CreateFollowerDto } from './dto/create-follower.dto';
+
+class MockFollowService {
+  create(dto: any) {
+    return [];
+  }
+
+  unfollowUser(dto: any) {
+    return [];
+  }
+}
 
 describe('FollowerService', () => {
   let service: FollowerService;
+  let mockService: FollowerService;
   let sandbox: sinon.SinonSandbox;
   beforeEach(async () => {
+    const provider = {
+      provide: FollowerService,
+      useClass: MockFollowService,
+    };
     sandbox = sinon.createSandbox();
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -20,12 +36,29 @@ describe('FollowerService', () => {
         },
       ],
     }).compile();
-
+    const app: TestingModule = await Test.createTestingModule({
+      providers: [FollowerService, provider],
+    }).compile();
+    mockService = app.get<FollowerService>(FollowerService);
     service = module.get<FollowerService>(FollowerService);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  it('Call create', () => {
+    const spy = jest.spyOn(mockService, 'create');
+    const dto = new CreateFollowerDto();
+    mockService.create(dto);
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('Call unfollow', () => {
+    const spy = jest.spyOn(mockService, 'unfollowUser');
+    const dto = new CreateFollowerDto();
+    mockService.unfollowUser(dto);
+    expect(spy).toHaveBeenCalled();
   });
 
   it('Call findAll', async () => {
