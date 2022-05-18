@@ -41,6 +41,21 @@ export class FollowerService {
     return this.followRepository.save(user);
   }
 
+  async followersByUserId(userId: number) {
+    return this.followRepository.findOne(userId, {
+      relations: ['followers'],
+    });
+  }
+
+  async followingByUserId(userId: number) {
+    return this.followRepository.find({
+      where: {
+        id: userId,
+      },
+      relations: ['following'],
+    });
+  }
+
   findAll() {
     return `This action returns all follower`;
   }

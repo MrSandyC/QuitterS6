@@ -18,18 +18,17 @@ export class QueetController {
   // @UseGuards(AuthzGuard)
   @Get()
   async findAll(@GetUserByAuth0Token() auth0token: string) {
-    console.log(auth0token);
     return this.queetService.findAll();
   }
 
-  @UseGuards(AuthzGuard)
+  // @UseGuards(AuthzGuard)
   @Get(':id')
   findOne(@Payload() id: number, @AddUserId() user: unknown) {
     console.log(user);
     return this.queetService.findOne(id);
   }
 
-  @UseGuards(AuthzGuard)
+  // @UseGuards(AuthzGuard)
   @Get('profile/:id')
   fetchQueetsByProfile(@Param() params) {
     return this.queetService.fetchByProfile(params.id);

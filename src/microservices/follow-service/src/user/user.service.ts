@@ -16,6 +16,12 @@ export class UserService {
     return this.userRepository.save(createUserDto);
   }
 
+  async followersByUserId(userId: number) {
+    return this.userRepository.findOne(userId, {
+      relations: ['followers'],
+    });
+  }
+
   findAll() {
     return `This action returns all user`;
   }

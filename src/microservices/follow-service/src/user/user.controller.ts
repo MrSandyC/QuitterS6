@@ -32,4 +32,9 @@ export class UserController {
   remove(@Payload() id: number) {
     return this.userService.remove(id);
   }
+
+  @MessagePattern('follow:find-followers-for-user')
+  followersByUserId(@Payload() userId: number) {
+    return this.userService.followersByUserId(userId);
+  }
 }
