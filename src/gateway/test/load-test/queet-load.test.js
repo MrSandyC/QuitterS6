@@ -10,11 +10,11 @@ export const options = {
     different_scaling: {
       exec: 'AllQueetTest',
       executor: 'ramping-vus',
-      startVUs: 0,
+      startVUs: 100,
       stages: [
-        { duration: '4m', target: 200 },
-        { duration: '7m30s', target: 100 },
-        { duration: '2m', target: 0 },
+        { duration: '1m', target: 2000 },
+        { duration: '2m30s', target: 1000 },
+        { duration: '1m', target: 0 },
       ],
     },
     different_scaling_profile: {

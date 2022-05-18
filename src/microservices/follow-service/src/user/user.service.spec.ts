@@ -1,25 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import * as sinon from 'sinon';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
 describe('UserService', () => {
   let service: UserService;
-
-  class UserRepo {
-    save(user: User) {
-      return user;
-    }
-  }
-
+  let sandbox: sinon.SinonSandbox;
   beforeEach(async () => {
+    sandbox = sinon.createSandbox();
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UserService,
         {
           provide: getRepositoryToken(User),
-          useClass: UserRepo,
+          useValue: sinon.createStubInstance(Repository),
         },
       ],
     }).compile();
@@ -31,77 +29,42 @@ describe('UserService', () => {
     expect(service).toBeDefined();
   });
 
-  it('create() - save a new user with said values', async () => {
-    const newUser: CreateUserDto = {
-      description: 'New user registering',
-      nickname: 'Test subject',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'Test_Sub',
-    };
-
-    const registeredUser = await service.create(newUser);
-
-    expect(registeredUser).toBeDefined();
-    expect(registeredUser.username).toBe(newUser.username);
+  it('Call create with repo & expected param', async () => {
+    const createSpy = jest.spyOn(service, 'create');
+    const dto = new CreateUserDto();
+    service.create(dto);
+    expect(createSpy).toHaveBeenCalledWith(dto);
   });
 
-  it('update() - Change values of user', async () => {
-    const user: User = {
-      id: 1,
-      description: 'New user registering',
-      nickname: 'Test subject',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'Test_Sub',
-      followers: [],
-      following: [],
-    };
-
-    const edit: User = {
-      id: 1,
-      description: 'New user registering',
-      nickname: 'Changed name',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'Test_Sub',
-      followers: [],
-      following: [],
-    };
-
-    const completedEdit = await service.update(edit);
-
-    expect(completedEdit).toBeDefined();
-    expect(user.nickname).not.toBe(completedEdit.nickname);
+  it('Call findAll', async () => {
+    const spy = jest.spyOn(service, 'findAll');
+    service.findAll();
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('delete() - Remove user', async () => {
-    const user: CreateUserDto = {
-      description: 'New user registering',
-      nickname: 'Test subject',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'Test_Sub',
-    };
+  it('Call findOne', async () => {
+    const spy = jest.spyOn(service, 'findOne');
+    const id = 1;
+    service.findOne(id);
+    expect(spy).toHaveBeenCalledWith(id);
+  });
 
-    const user2: CreateUserDto = {
-      description: 'New user registering',
-      nickname: 'Changed name',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'user2',
-    };
+  it('Call update with expected param', async () => {
+    const spy = jest.spyOn(service, 'update');
+    const id = 1;
+    const dto = new UpdateUserDto();
+    service.update(dto);
+    expect(spy).toHaveBeenCalledWith(dto);
+  });
 
-    const user3: CreateUserDto = {
-      description: 'New user registering',
-      nickname: 'Changed name',
-      profileUri: 'https://ditisgeenlink.com/image',
-      username: 'user3',
-    };
+  it('Call remove with repo &  expected param', async () => {
+    const spy = jest.spyOn(service, 'remove');
+    const id = 1;
+    service.remove(id);
+    expect(spy).toHaveBeenCalledWith(id);
+  });
 
-    const user1: User = await service.create(user);
-    const scdUser: User = await service.create(user2);
-    const thrUser: User = await service.create(user3);
-
-    const allUsers = [user1, scdUser, thrUser];
-    const newUsers = allUsers.filter((user) => user.username !== 'user3');
-    //await service.remove(thrUser.id);
-
-    expect(newUsers).not.toContain(thrUser);
+  afterAll(async () => {
+    sandbox.restore();
   });
 });

@@ -18,14 +18,13 @@ export class QueetController {
   // @UseGuards(AuthzGuard)
   @Get()
   findAll(@GetUserByAuth0Token() auth0token: string) {
-    console.log(auth0token);
+    // console.log(auth0token);
     return this.queetService.findAll();
   }
 
   // @UseGuards(AuthzGuard)
   @Get(':id')
   findOne(@Payload() id: number, @AddUserId() user: unknown) {
-    console.log(user);
     return this.queetService.findOne(id);
   }
 

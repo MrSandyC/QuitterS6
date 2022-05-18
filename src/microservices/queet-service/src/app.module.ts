@@ -12,10 +12,10 @@ import { UserModule } from './user/user.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '10.42.1.6',
+      host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'password',
+      password: 'root',
       database: 'quitter-queet',
       entities: [Queet, User],
       synchronize: true,
