@@ -6,8 +6,6 @@ on:
       - 'src/Frontend/**'
     branches: 
       - master
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -61,31 +59,6 @@ jobs:
     # - name: Run test
     #   working-directory: ./src/Frontend
     #   run: npm test
-    
-  semver:
-    name: Calculate SemVer version
-    runs-on: ubuntu-latest
-    outputs:
-      SEMVER: ${{ steps.fixsemver.outputs.SEMVER }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
-    - name: Git version
-      id: gitversion
-      uses: codacy/git-version@2.4.0
-      with:
-        prefix: quitter-queet-service-
-
-    - name: Fix semver
-      id: fixsemver
-      run: |
-        VERSION=${{ steps.gitversion.outputs.VERSION }}
-        FIXED_SEMVER=${VERSION##*quitter-queet-service-}
-        echo "::set-output name=SEMVER::${FIXED_SEMVER}"
-        echo "${FIXED_SEMVER}"
 
   deployment:
     needs: [build, test]
