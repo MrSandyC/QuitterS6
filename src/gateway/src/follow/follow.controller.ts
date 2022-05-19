@@ -22,4 +22,9 @@ export class FollowController {
   fetchFollowers(@Payload() id: number) {
     return this.followService.fetchFollowers(id);
   }
+
+  @Get('/following')
+  fetchFollowingUsers(@Payload() id: number) {
+    return this.followService.fetchFollowingUsers(id)
+  }
 }
