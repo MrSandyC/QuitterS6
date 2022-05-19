@@ -10,33 +10,36 @@ import { FollowModule } from './follow/follow.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     ClientsModule.register([
       {
         name: 'Queet-service',
         transport: Transport.TCP,
         options: {
-          port: 5001,
+          host: String(process.env.queet_service_host),
+          port: parseInt(process.env.queet_service_port),
         },
       },
       {
         name: 'Follow-service',
         transport: Transport.TCP,
         options: {
-          port: 5003,
+          host: String(process.env.follow_service_host),
+          port: parseInt(process.env.follow_service_port),
         },
       },
       {
         name: 'User-service',
         transport: Transport.TCP,
         options: {
-          port: 5002,
+          host: String(process.env.user_service_host),
+          port: parseInt(process.env.user_service_port),
         },
       },
     ]),
     QueetModule,
     UserModule,
     AuthzModule,
-    ConfigModule.forRoot(),
     FollowModule,
   ],
   controllers: [AppController],

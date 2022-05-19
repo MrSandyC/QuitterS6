@@ -7,5 +7,4 @@ spec:
     app: queet-service
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 5001
+      port: 5001

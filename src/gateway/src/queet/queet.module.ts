@@ -10,7 +10,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'Queet-service',
         transport: Transport.TCP,
         options: {
-          port: 5001,
+          host: String(process.env.queet_service_host),
+          port: parseInt(process.env.queet_service_port),
         },
       },
     ]),

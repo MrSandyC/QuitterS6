@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: follow-service
-        image: localhost:5000/follow-service:v0.1.7
+        image: localhost:5000/follow-service:v0.1.8
         ports:
         - containerPort: 5003

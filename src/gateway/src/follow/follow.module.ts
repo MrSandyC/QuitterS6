@@ -10,7 +10,8 @@ import { FollowService } from './follow.service';
         name: 'Follow-service',
         transport: Transport.TCP,
         options: {
-          port: 5003,
+          host: String(process.env.follow_service_host),
+          port: parseInt(process.env.follow_service_port),
         },
       },
     ]),

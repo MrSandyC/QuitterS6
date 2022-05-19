@@ -7,5 +7,4 @@ spec:
     app: user-service
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 5002
+      port: 5002
