@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: queet-service
-        image: localhost:5000/queet-service:v0.1.3
+        image: localhost:5000/queet-service:v0.2.3
         ports:
         - containerPort: 5001
