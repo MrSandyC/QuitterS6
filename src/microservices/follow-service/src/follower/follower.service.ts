@@ -48,10 +48,7 @@ export class FollowerService {
   }
 
   async followingByUserId(userId: number) {
-    return this.followRepository.find({
-      where: {
-        id: userId,
-      },
+    return this.followRepository.findOne(userId, {
       relations: ['following'],
     });
   }

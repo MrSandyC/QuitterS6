@@ -29,4 +29,12 @@ export class FollowService {
       httpOptions
     );
   }
+
+  fetchFollowers(userId: number) {
+    return this.httpClient.get<any>(`${baseUrl}/followers`, { params: { id: userId } });
+  }
+
+  fetchFollowing(userId: number) {
+    return this.httpClient.get<any>(`${baseUrl}/following`, { params: { id: userId } });
+  }
 }

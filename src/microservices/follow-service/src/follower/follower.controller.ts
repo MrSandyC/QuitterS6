@@ -21,13 +21,13 @@ export class FollowerController {
   }
 
   @MessagePattern('follow:find-following-for-user')
-  findAll() {
-    return this.followerService.findAll();
+  findFollowingByUserId(@Payload() id: number) {
+    return this.followerService.followingByUserId(id);
   }
 
   @MessagePattern('follow:find-followers-for-user')
   findOne(@Payload() id: number) {
-    return this.followerService.findOne(id);
+    return this.followerService.followersByUserId(id);
   }
 
   @MessagePattern('updateFollower')

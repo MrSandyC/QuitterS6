@@ -18,10 +18,10 @@ export class FollowService {
 
   fetchFollowers(userId: number) {
     console.log('got here')
-    return this.followClient.emit('follow:find-followers-for-user', userId);
+    return this.followClient.send('follow:find-followers-for-user', userId);
   }
 
   fetchFollowingUsers(id: number) {
-    return this.followClient.emit('follow:find-following-for-user', id);
+    return this.followClient.send('follow:find-following-for-user', id);
   }
 }
