@@ -15,6 +15,14 @@ class MockFollowService {
   unfollowUser(_dto: any) {
     return [];
   }
+
+  followingByUserId(id: any) {
+    return [];
+  }
+
+  followersByUserId(id: any) {
+    return [];
+  }
 }
 
 describe('FollowerService', () => {
@@ -90,16 +98,16 @@ describe('FollowerService', () => {
   });
 
   it('Call followersByUserId with repo &  expected param', async () => {
-    const spy = jest.spyOn(service, 'followersByUserId');
+    const spy = jest.spyOn(mockService, 'followersByUserId');
     const id = 1;
-    service.followersByUserId(id);
+    mockService.followersByUserId(id);
     expect(spy).toHaveBeenCalledWith(id);
   });
 
   it('Call followingByUserId with repo &  expected param', async () => {
-    const spy = jest.spyOn(service, 'followingByUserId');
+    const spy = jest.spyOn(mockService, 'followingByUserId');
     const id = 1;
-    service.followingByUserId(id);
+    mockService.followingByUserId(id);
     expect(spy).toHaveBeenCalledWith(id);
   });
 

@@ -25,6 +25,9 @@ describe('FollowerController', () => {
         delete: jest.fn(() => {
           /**/
         }),
+        findFollowingByUserId: jest.fn(() => {
+          /**/
+        }),
       }),
     };
     const module: TestingModule = await Test.createTestingModule({
@@ -50,17 +53,6 @@ describe('FollowerController', () => {
     controller.create(dto);
     expect(service.create).toHaveBeenCalled();
     expect(service.create).toHaveBeenCalledWith(dto);
-  });
-
-  it('calling findAll method', () => {
-    controller.findAll();
-    expect(service.findAll).toHaveBeenCalled();
-  });
-
-  it('calling findOne method', () => {
-    const id = 2;
-    controller.findOne(id);
-    expect(service.findOne).toHaveBeenCalled();
   });
 
   it('calling update function', () => {
