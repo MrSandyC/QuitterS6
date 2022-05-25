@@ -42,13 +42,13 @@ export class FollowerService {
   }
 
   async followersByUserId(userId: any) {
-    return this.followRepository.findOne(userId, {
+    return this.followRepository.findOneOrFail(userId, {
       relations: ['followers'],
     });
   }
 
   async followingByUserId(userId: any) {
-    return this.followRepository.findOne(userId, {
+    return this.followRepository.findOneOrFail(userId, {
       relations: ['following'],
     });
   }

@@ -65,8 +65,8 @@ import { FollowerComponent } from './components/follower/follower.component';
     FontAwesomeModule,
     MatProgressSpinnerModule,
     AuthModule.forRoot({
-      domain: 'quitter-dev.eu.auth0.com',
-      clientId: 'FhAz272pqwzNvODJXWH2uXb6yVCWvPQ9',
+      domain: String(process.env['AUTH0_DOMAIN']),
+      clientId: String(process.env['AUTH0_CLIENTID']),
     }),
   ],
   providers: [
