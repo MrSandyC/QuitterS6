@@ -28,7 +28,7 @@ export class UserController {
     return this.userService.fetchUserByAuth0token(auth0id);
   }
 
-  @MessagePattern('findAllUser')
+  @MessagePattern('user:find-all')
   findAll() {
     return this.userService.findAll();
   }

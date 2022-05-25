@@ -8,26 +8,41 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: 'User-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          host: String(process.env.user_service_host),
-          port: parseInt(process.env.user_service_port),
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_USER_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
       {
         name: 'Follow-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          host: String(process.env.follow_service_host),
-          port: parseInt(process.env.follow_service_port),
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_FOLLOW_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
       {
         name: 'Queet-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          host: String(process.env.queet_service_host),
-          port: parseInt(process.env.queet_service_port),
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_QUEET_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
     ]),
