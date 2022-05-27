@@ -16,6 +16,10 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: localhost:5000/user-service:v0.1.6
+        image: localhost:5000/user-service:v0.1.9
+        resources:
+          limits:
+            memory: 500Mi
+            cpi: 500m
         ports:
         - containerPort: 5002

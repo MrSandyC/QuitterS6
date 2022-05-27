@@ -16,6 +16,10 @@ spec:
     spec:
       containers:
       - name: queet-service
-        image: localhost:5000/queet-service:v0.2.6
+        image: localhost:5000/queet-service:v0.2.8
+        resources:
+          limits:
+            memory: 500Mi
+            cpi: 500m
         ports:
         - containerPort: 5001

@@ -18,5 +18,9 @@ spec:
       - name: frontend
         image: localhost:5000/frontend:v0.1.5
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 500Mi
+            cpi: 500m
         ports:
         - containerPort: 4200

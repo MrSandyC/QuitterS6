@@ -16,7 +16,11 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: localhost:5000/gateway:v0.2.6
+        image: localhost:5000/gateway:v0.2.9
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: 500Mi
+            cpi: 500m
         ports:
         - containerPort: 3000

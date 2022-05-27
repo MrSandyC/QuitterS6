@@ -16,6 +16,10 @@ spec:
     spec:
       containers:
       - name: follow-service
-        image: localhost:5000/follow-service:v0.1.8
+        image: localhost:5000/follow-service:v0.2.1
+        resources:
+          limits:
+            memory: 500Mi
+            cpi: 500m
         ports:
         - containerPort: 5003
