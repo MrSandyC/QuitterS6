@@ -17,7 +17,6 @@ export class FollowService {
   }
 
   fetchFollowers(userId: number) {
-    console.log('got here')
     return this.followClient.send('follow:find-followers-for-user', userId);
   }
 

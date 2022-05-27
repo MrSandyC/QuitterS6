@@ -41,14 +41,14 @@ export class FollowerService {
     return this.followRepository.save(user);
   }
 
-  async followersByUserId(userId: number) {
-    return this.followRepository.findOne(userId, {
+  async followersByUserId(userId: any) {
+    return this.followRepository.findOneOrFail(userId, {
       relations: ['followers'],
     });
   }
 
-  async followingByUserId(userId: number) {
-    return this.followRepository.findOne(userId, {
+  async followingByUserId(userId: any) {
+    return this.followRepository.findOneOrFail(userId, {
       relations: ['following'],
     });
   }

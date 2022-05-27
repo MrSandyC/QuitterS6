@@ -26,7 +26,7 @@ export class FollowerController {
   }
 
   @MessagePattern('follow:find-followers-for-user')
-  findOne(@Payload() id: number) {
+  findFollowersByUserId(@Payload() id: number) {
     return this.followerService.followersByUserId(id);
   }
 

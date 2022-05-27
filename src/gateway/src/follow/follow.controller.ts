@@ -25,6 +25,6 @@ export class FollowController {
 
   @Get('/following')
   fetchFollowingUsers(@Payload() id: number) {
-    return this.followService.fetchFollowingUsers(id)
+    return this.followService.fetchFollowingUsers(id);
   }
 }

@@ -8,10 +8,15 @@ import { FollowService } from './follow.service';
     ClientsModule.register([
       {
         name: 'Follow-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          host: String(process.env.follow_service_host),
-          port: parseInt(process.env.follow_service_port),
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_FOLLOW_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
     ]),

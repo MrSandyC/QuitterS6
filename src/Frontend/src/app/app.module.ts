@@ -29,6 +29,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
+import { environment } from 'src/environments/environment';
 
 // TODO: https://auth0.com/blog/complete-guide-to-angular-user-authentication/#Retrieving-User-Information
 @NgModule({
@@ -65,8 +66,8 @@ import { FollowerComponent } from './components/follower/follower.component';
     FontAwesomeModule,
     MatProgressSpinnerModule,
     AuthModule.forRoot({
-      domain: 'quitter-dev.eu.auth0.com',
-      clientId: 'FhAz272pqwzNvODJXWH2uXb6yVCWvPQ9',
+      domain: environment.AUTH0_DOMAIN,
+      clientId: environment.AUTH0_CLIENTID,
     }),
   ],
   providers: [
