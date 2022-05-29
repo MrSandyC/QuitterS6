@@ -107,6 +107,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Do Something with env files
+      env:
+        ENV_FILE: ${{ secrets.USER_ENV }}
+      working-directory: ./src/microservices/user-service/
+      run: |
+        echo $ENV_FILE | base64 --decode > .env
+
     - uses: actions/checkout@main
     # Connecting to Azure Container Registry (ACR)
     - uses: azure/docker-login@v1
