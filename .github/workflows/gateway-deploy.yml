@@ -67,7 +67,7 @@ jobs:
     #   working-directory: ./src/gateway
     #   run: npm test
 
-  deployment:
+  build-docker:
     needs: [build, test]
     name: Docker push stage
     runs-on: ubuntu-latest
