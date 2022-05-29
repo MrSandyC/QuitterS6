@@ -1,4 +1,4 @@
-name: Follow service CI CD
+name: Follow service CI CD 
 
 on:
   push:
@@ -6,6 +6,13 @@ on:
       - 'src/microservices/follow-service/**'
     branches: 
       - master
+
+env:
+  REGISTRY_NAME: quittercr
+  CLUSTER_NAME: QuitterS6
+  CLUSTER_RESOURCE_GROUP: QuitterS6
+  NAMESPACE: default
+  APP_NAME: Quitter
 
 jobs:
   build:
