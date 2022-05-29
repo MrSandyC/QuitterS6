@@ -12,7 +12,8 @@ env:
   CLUSTER_NAME: QuitterS6
   CLUSTER_RESOURCE_GROUP: QuitterS6
   NAMESPACE: default
-  APP_NAME: gateway
+  APP_NAME: user-service
+  SECRET: githubdeploymentsecret
 
 jobs:
   build:
