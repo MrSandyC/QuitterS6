@@ -7,6 +7,13 @@ on:
     branches: 
       - master
 
+env:
+  REGISTRY_NAME: quittercr
+  CLUSTER_NAME: QuitterS6
+  CLUSTER_RESOURCE_GROUP: QuitterS6
+  NAMESPACE: default
+  APP_NAME: Quitter
+
 jobs:
   build:
 
@@ -91,3 +98,53 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  azure-deploy:
+    needs: [build, test, build-docker]
+    name: Azure deployment
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@main
+    # Connecting to Azure Container Registry (ACR)
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    # Building docker image and pushing to ACR
+    - run: |
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+      working-directory: ./src/microservices/user-service/
+    
+    # Set target AKS cluster
+    - uses: azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        cluster-name: ${{ env.CLUSTER_NAME }}
+        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+    
+    # Create image pull secret for ACR
+    - uses: azure/k8s-create-secret@v1
+      with:
+        container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
+        container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+        container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+        secret-name: ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}
+        arguments: --force true
+    
+    # Deploy app to AKS
+    - uses: azure/k8s-deploy@v1
+      with:
+        manifests: |
+          ${{ github.workspace }}/k8s/microservices/user-service/deployment.yaml
+          ${{ github.workspace }}/k8s/microservices/user-service/service.yaml
+          ${{ github.workspace }}/k8s/microservices/user-service/ingress.yaml
+        images: |
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        imagepullsecrets: |
+          ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}

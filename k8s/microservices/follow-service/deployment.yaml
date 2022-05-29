@@ -20,6 +20,6 @@ spec:
         resources:
           limits:
             memory: 500Mi
-            cpi: 500m
+            cpu: 500m
         ports:
         - containerPort: 5003
