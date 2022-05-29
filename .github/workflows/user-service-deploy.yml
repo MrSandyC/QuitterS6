@@ -13,6 +13,7 @@ env:
   CLUSTER_RESOURCE_GROUP: QuitterS6
   NAMESPACE: default
   APP_NAME: user-service
+  SECRET: githubdeploymentsecret
 
 jobs:
   build:
