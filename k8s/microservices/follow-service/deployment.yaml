@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: follow-service
-        image: localhost:5000/follow-service:v0.2.1
+        image: quittercr.azurecr.io/follow-service:v0.4.0
         resources:
           limits:
             memory: 500Mi

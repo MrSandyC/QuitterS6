@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: localhost:5000/gateway:v0.2.9
+        image: quittercr.azurecr.io/gateway:v0.4.0
         imagePullPolicy: IfNotPresent
         resources:
           limits:
