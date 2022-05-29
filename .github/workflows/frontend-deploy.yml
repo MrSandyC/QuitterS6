@@ -143,7 +143,7 @@ jobs:
         manifests: |
           ${{ github.workspace }}/k8s/frontend/deployment.yaml
           ${{ github.workspace }}/k8s/frontend/service.yaml
-          ${{ github.workspace }}/k8s/frontend-*/ingress.yaml
+          ${{ github.workspace }}/k8s/frontend/ingress.yaml
         images: |
           ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         imagepullsecrets: |
