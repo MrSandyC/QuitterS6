@@ -107,12 +107,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Check out the repo
-        uses: actions/checkout@v3
     - name: Generate env file
       env:
         ENV_FILE: ${{ secrets.USER_ENV }}
-      working-directory: src/microservices/user-service/
+      working-directory: './src/microservices/user-service/'
       run: |
         echo $ENV_FILE | base64 --decode > .env
 
