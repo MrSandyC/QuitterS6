@@ -117,8 +117,8 @@ jobs:
 
     # Building docker image and pushing to ACR
     - run: |
-        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
       working-directory: ./src/gateway
     
     # Set target AKS cluster
@@ -142,11 +142,11 @@ jobs:
     - uses: azure/k8s-deploy@v1
       with:
         manifests: |
-          ${{ github.workspace }}/k8s/gateway/deployment.yaml
-          ${{ github.workspace }}/k8s/gateway/service.yaml
-          ${{ github.workspace }}/k8s/gateway/ingress.yaml
+          ${{ github.workspace }}/k8s/microservices/follow-service/deployment.yaml
+          ${{ github.workspace }}/k8s/microservices/follow-service/service.yaml
+          ${{ github.workspace }}/k8s/microservices/follow-service/ingress.yaml
         images: |
-          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
         imagepullsecrets: |
           ${{ env.SECRET }}
         namespace: ${{ env.NAMESPACE }}

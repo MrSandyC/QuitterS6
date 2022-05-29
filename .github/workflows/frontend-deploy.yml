@@ -117,8 +117,8 @@ jobs:
 
     # Building docker image and pushing to ACR
     - run: |
-        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
       working-directory: ./src/Frontend
     
     # Set target AKS cluster
@@ -143,10 +143,8 @@ jobs:
       with:
         manifests: |
           ${{ github.workspace }}/k8s/frontend/deployment.yaml
-          ${{ github.workspace }}/k8s/frontend/service.yaml
-          ${{ github.workspace }}/k8s/frontend/ingress.yaml
         images: |
-          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
         imagepullsecrets: |
           ${{ env.SECRET }}
         namespace: ${{ env.NAMESPACE }}

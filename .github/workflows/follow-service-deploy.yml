@@ -143,8 +143,6 @@ jobs:
       with:
         manifests: |
           ${{ github.workspace }}/k8s/microservices/follow-service/deployment.yaml
-          ${{ github.workspace }}/k8s/microservices/follow-service/service.yaml
-          ${{ github.workspace }}/k8s/microservices/follow-service/ingress.yaml
         images: |
           ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
         imagepullsecrets: |
