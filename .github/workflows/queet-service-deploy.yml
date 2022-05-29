@@ -8,12 +8,12 @@ on:
       - master
 
 env:
-  REGISTRY_NAME: quittercr
-  CLUSTER_NAME: QuitterS6
-  CLUSTER_RESOURCE_GROUP: QuitterS6
-  NAMESPACE: default
-  APP_NAME: user-service
-  SECRET: githubdeploymentsecret
+  REGISTRY_NAME: 'quittercr'
+  CLUSTER_NAME: 'QuitterS6'
+  CLUSTER_RESOURCE_GROUP: 'QuitterS6'
+  NAMESPACE: 'default'
+  APP_NAME: 'queet-service'
+  SECRET: 'githubdeploymentsecret'
 
 jobs:
   build:
