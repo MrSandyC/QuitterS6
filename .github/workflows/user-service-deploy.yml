@@ -107,12 +107,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Generate env file
-      env:
-        ENV_FILE: ${{ secrets.USER_ENV }}
-      working-directory: './src/microservices/user-service/'
-      run: |
-        echo $ENV_FILE | base64 --decode > .env
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v1
+      with:
+        env: ${{ secrets.USER_ENV }}
+        directory: './src/microservices/user-service/'
+        file_name: '.env'
 
     - uses: actions/checkout@main
     # Connecting to Azure Container Registry (ACR)
