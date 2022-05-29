@@ -12,7 +12,7 @@ env:
   CLUSTER_NAME: QuitterS6
   CLUSTER_RESOURCE_GROUP: QuitterS6
   NAMESPACE: default
-  APP_NAME: Quitter
+  APP_NAME: frontend
 
 jobs:
   build:
