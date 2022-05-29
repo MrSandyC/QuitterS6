@@ -107,7 +107,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Do Something with env files
+    - name: Check out the repo
+        uses: actions/checkout@v3
+    - name: Generate env file
       env:
         ENV_FILE: ${{ secrets.USER_ENV }}
       working-directory: src/microservices/user-service/
