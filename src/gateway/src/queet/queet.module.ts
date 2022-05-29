@@ -8,9 +8,15 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: 'Queet-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          port: 5001,
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_QUEET_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
     ]),

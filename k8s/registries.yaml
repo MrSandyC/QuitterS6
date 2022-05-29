@@ -1,4 +1,4 @@
 mirrors:
-  "localhost:7000":
+  "localhost:5000":
     endpoint:
-      - http://k3d-kw-r:7000
+      - http://k3d-kw-r:5000

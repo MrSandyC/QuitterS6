@@ -16,15 +16,21 @@ export class UserService {
     return this.userRepository.save(createUserDto);
   }
 
+  async followersByUserId(userId: number) {
+    return this.userRepository.findOne(userId, {
+      relations: ['followers'],
+    });
+  }
+
   findAll() {
-    return `This action returns all user`;
+    return this.userRepository.find();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(updateUserDto: UpdateUserDto) {
     return this.userRepository.save(updateUserDto);
   }
 

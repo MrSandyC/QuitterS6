@@ -6,6 +6,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FollowerComponent } from './components/follower/follower.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'profile/edit',
     component: EditProfileComponent,
+  },
+  {
+    path: ':username/followers',
+    component: FollowerComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: ':username',

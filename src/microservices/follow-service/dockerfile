@@ -27,6 +27,6 @@ RUN npm install --only=production
 
 COPY . .
 
-COPY --from=builder /usr/src/app/disc ./dist
+COPY --from=builder /usr/src/app/dist ./dist
 
 CMD ["node", "dist/main"]

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { NotFoundError } from 'rxjs';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -18,11 +17,11 @@ export class UserService {
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.userRepository.find();
   }
 
   fetchUserByUsername(username: string) {
-    const user = this.userRepository
+    return this.userRepository
       .findOneOrFail({
         where: {
           username: username,
@@ -31,8 +30,6 @@ export class UserService {
       .catch(() => {
         return false;
       });
-
-    return user;
   }
 
   fetchUserByAuth0token(auth0id: string) {
@@ -63,7 +60,7 @@ export class UserService {
       });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(updateUserDto: UpdateUserDto) {
     return this.userRepository.save(updateUserDto);
   }
 

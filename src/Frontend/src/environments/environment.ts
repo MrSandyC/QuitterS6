@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   apiURL: 'http://localhost:3000',
+  AUTH0_DOMAIN: 'quitter-dev.eu.auth0.com',
+  AUTH0_CLIENTID: 'FhAz272pqwzNvODJXWH2uXb6yVCWvPQ9',
+  CHROME_BIN: '/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe',
 };
 
 /*

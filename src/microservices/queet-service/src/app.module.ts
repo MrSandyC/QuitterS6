@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,13 +10,14 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.MYSQL_HOST,
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'quitter-queet',
+      host: String(process.env.MYSQL_HOST),
+      port: parseInt(process.env.MYSQL_PORT),
+      username: String(process.env.mysql_username),
+      password: String(process.env.mysql_password),
+      database: String(process.env.database),
       entities: [Queet, User],
       synchronize: true,
     }),

@@ -8,23 +8,41 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: 'User-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          port: 5002,
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_USER_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
       {
         name: 'Follow-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          port: 5003,
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_FOLLOW_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
       {
         name: 'Queet-service',
-        transport: Transport.TCP,
+        transport: Transport.RMQ,
         options: {
-          port: 5001,
+          urls: [
+            `amqp://${process.env.RABBITMQ_DEFAULT_USER}:${process.env.RABBITMQ_DEFAULT_PASS}@${process.env.RABBITMQ_HOST}`,
+          ],
+          queue: String(process.env.RABBITMQ_QUEET_QUEUE),
+          queueOptions: {
+            durable: true,
+          },
         },
       },
     ]),

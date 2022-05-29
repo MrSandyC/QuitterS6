@@ -25,11 +25,16 @@ export class UserController {
 
   @MessagePattern('user:update')
   update(@Payload() updateUserDto: UpdateUserDto) {
-    return this.userService.update(updateUserDto.id, updateUserDto);
+    return this.userService.update(updateUserDto);
   }
 
   @MessagePattern('user:remove')
   remove(@Payload() id: number) {
     return this.userService.remove(id);
+  }
+
+  @MessagePattern('follow:find-followers-for-user')
+  followersByUserId(@Payload() userId: number) {
+    return this.userService.followersByUserId(userId);
   }
 }
