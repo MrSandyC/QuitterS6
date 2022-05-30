@@ -18,8 +18,9 @@ export class FollowController {
     return this.followService.unfollowUser(followRequest);
   }
 
-  @Get('/followers')
+  @Post('/followers')
   fetchFollowers(@Payload() username: string) {
+    console.log(username);
     return this.followService.fetchFollowers(username);
   }
 

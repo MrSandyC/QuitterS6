@@ -36,10 +36,16 @@ export class FollowService {
   }
 
   fetchFollowers(username: string) {
-    return this.httpClient.get<any>(`${baseUrl}/followers`, { params: { username: username } });
+    const body = {
+      username: username
+    }
+    return this.httpClient.post<any>(`${baseUrl}/followers`, body, httpOptions);
   }
 
   fetchFollowing(username: string) {
-    return this.httpClient.get<any>(`${baseUrl}/following`, { params: { username: username } });
+    const body = {
+      username: username
+    }
+    return this.httpClient.post<any>(`${baseUrl}/following`, body, httpOptions);
   }
 }

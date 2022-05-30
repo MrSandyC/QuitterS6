@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   queets!: Queet[];
   user!: User;
   authUser!: string;
+  id!: number;
   constructor(
     public auth: AuthService,
     public queetService: QueetService,
@@ -40,7 +41,7 @@ export class ProfileComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {}
 
-  followUser(): void {
+  async followUser(): Promise<void> {
     console.log('followed user');
     console.log(this.user['id']);
     let id: number;
@@ -48,12 +49,12 @@ export class ProfileComponent implements OnInit {
       .fetchUserByToken(this.authUser)
       .pipe(first())
       .subscribe((val) => {
-        id = val.id!;
-      });
-    this.followService
-      .followUser(id!, this.user['id'])
+        this.id = val.id!;
+        this.followService
+      .followUser(this.id, this.user['id'])
       .pipe(first())
       .subscribe((val) => console.log(val));
+      });
   }
 
   redirectToEdit(): void {
