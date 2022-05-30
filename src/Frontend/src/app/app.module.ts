@@ -30,6 +30,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
 import { environment } from 'src/environments/environment';
+import { FollowingComponent } from './components/following/following.component';
 
 // TODO: https://auth0.com/blog/complete-guide-to-angular-user-authentication/#Retrieving-User-Information
 @NgModule({
@@ -46,6 +47,7 @@ import { environment } from 'src/environments/environment';
     RegisterComponent,
     EditProfileComponent,
     FollowerComponent,
+    FollowingComponent,
   ],
   imports: [
     BrowserModule,

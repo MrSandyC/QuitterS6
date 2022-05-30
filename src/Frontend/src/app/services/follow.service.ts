@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+import { User } from '../models/user';
 
 const baseUrl = `${environment.apiURL}/follow`;
 const httpOptions = {
@@ -23,18 +24,22 @@ export class FollowService {
   }
 
   followUser(followerId: number, followingId: number) {
-    return this.httpClient.post<any>(
+    const body = {
+      "follower": followerId,
+      "following": followingId,
+    }
+    return this.httpClient.post<User>(
       baseUrl,
-      { follower: followerId, following: followerId },
+      body,
       httpOptions
     );
   }
 
-  fetchFollowers(userId: number) {
-    return this.httpClient.get<any>(`${baseUrl}/followers`, { params: { id: userId } });
+  fetchFollowers(username: string) {
+    return this.httpClient.get<any>(`${baseUrl}/followers`, { params: { username: username } });
   }
 
-  fetchFollowing(userId: number) {
-    return this.httpClient.get<any>(`${baseUrl}/following`, { params: { id: userId } });
+  fetchFollowing(username: string) {
+    return this.httpClient.get<any>(`${baseUrl}/following`, { params: { username: username } });
   }
 }

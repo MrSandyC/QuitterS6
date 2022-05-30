@@ -9,7 +9,7 @@ export class FollowController {
 
   @Post()
   followUser(@Payload() followRequest: NewFollowerRequest) {
-    console.log(followRequest);
+    console.log('got here');
     return this.followService.followUser(followRequest);
   }
 
@@ -19,12 +19,12 @@ export class FollowController {
   }
 
   @Get('/followers')
-  fetchFollowers(@Payload() id: number) {
-    return this.followService.fetchFollowers(id);
+  fetchFollowers(@Payload() username: string) {
+    return this.followService.fetchFollowers(username);
   }
 
   @Get('/following')
-  fetchFollowingUsers(@Payload() id: number) {
-    return this.followService.fetchFollowingUsers(id);
+  fetchFollowingUsers(@Payload() username: string) {
+    return this.followService.fetchFollowingUsers(username);
   }
 }
