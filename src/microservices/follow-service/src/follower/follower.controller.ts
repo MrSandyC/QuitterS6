@@ -22,13 +22,13 @@ export class FollowerController {
 
   @MessagePattern('follow:find-following-for-user')
   findFollowingByUserId(@Payload() username: string) {
-    return this.followerService.followingByUserId(username);
+    return this.followerService.followingByUsername(username);
   }
 
   @MessagePattern('follow:find-followers-for-user')
   findFollowersByUserId(@Payload() username: string) {
     console.log(username);
-    return this.followerService.followersByUserId(username);
+    return this.followerService.followingByUsername(username);
   }
 
   @MessagePattern('updateFollower')
