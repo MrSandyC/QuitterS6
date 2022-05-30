@@ -99,16 +99,16 @@ describe('FollowerService', () => {
 
   it('Call followersByUserId with repo &  expected param', async () => {
     const spy = jest.spyOn(mockService, 'followersByUserId');
-    const id = 1;
-    mockService.followersByUserId(id);
-    expect(spy).toHaveBeenCalledWith(id);
+    const username = 'test';
+    mockService.followersByUserId(username);
+    expect(spy).toHaveBeenCalledWith(username);
   });
 
   it('Call followingByUserId with repo &  expected param', async () => {
     const spy = jest.spyOn(mockService, 'followingByUserId');
-    const id = 1;
-    mockService.followingByUserId(id);
-    expect(spy).toHaveBeenCalledWith(id);
+    const username = 'test';
+    mockService.followersByUserId(username);
+    expect(spy).toHaveBeenCalledWith(username);
   });
 
   afterAll(async () => {
