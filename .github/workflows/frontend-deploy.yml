@@ -100,7 +100,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
+  
   azure-deploy:
     needs: [build, test, build-docker]
     name: Azure deployment
@@ -148,3 +148,18 @@ jobs:
         imagepullsecrets: |
           ${{ env.SECRET }}
         namespace: ${{ env.NAMESPACE }}
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://salmon-dune-0e7191003.1.azurestaticapps.net/'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
