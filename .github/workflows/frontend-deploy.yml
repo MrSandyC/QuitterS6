@@ -8,12 +8,13 @@ on:
       - master
 
 env:
-  REGISTRY_NAME: quittercr
-  CLUSTER_NAME: QuitterS6
-  CLUSTER_RESOURCE_GROUP: QuitterS6
-  NAMESPACE: default
-  APP_NAME: user-service
-  SECRET: githubdeploymentsecret
+  REGISTRY_NAME: 'quittercr'
+  CLUSTER_NAME: 'QuitterS6'
+  CLUSTER_RESOURCE_GROUP: 'QuitterS6'
+  NAMESPACE: 'default'
+  APP_NAME: 'frontend'
+  SECRET: 'githubdeploymentsecret'
+  APP_VERSION: 'v0.4.1'
 
 jobs:
   build:
@@ -32,9 +33,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./src/Frontend/package-lock.json
-    - name: Run CI
+    - name: Run CI 
       working-directory: ./src/Frontend
-      run: npm ci
+      run: npm ci --force
     - name: Run build
       working-directory: ./src/Frontend
       run: npm run build --if-present
@@ -63,7 +64,7 @@ jobs:
         cache-dependency-path: ./src/Frontend/package-lock.json
     - name: Run CI
       working-directory: ./src/Frontend
-      run: npm ci
+      run: npm ci --force
     # - name: Run test
     #   working-directory: ./src/Frontend
     #   run: npm test
@@ -99,7 +100,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
+  
   azure-deploy:
     needs: [build, test, build-docker]
     name: Azure deployment
@@ -116,8 +117,8 @@ jobs:
 
     # Building docker image and pushing to ACR
     - run: |
-        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
       working-directory: ./src/Frontend
     
     # Set target AKS cluster
@@ -142,10 +143,23 @@ jobs:
       with:
         manifests: |
           ${{ github.workspace }}/k8s/frontend/deployment.yaml
-          ${{ github.workspace }}/k8s/frontend/service.yaml
-          ${{ github.workspace }}/k8s/frontend-*/ingress.yaml
         images: |
-          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
         imagepullsecrets: |
           ${{ env.SECRET }}
         namespace: ${{ env.NAMESPACE }}
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://salmon-dune-0e7191003.1.azurestaticapps.net/'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
