@@ -33,7 +33,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./src/Frontend/package-lock.json
-    - name: Run CI --force
+    - name: Run CI 
       working-directory: ./src/Frontend
       run: npm ci --force
     - name: Run build
@@ -64,7 +64,7 @@ jobs:
         cache-dependency-path: ./src/Frontend/package-lock.json
     - name: Run CI
       working-directory: ./src/Frontend
-      run: npm ci
+      run: npm ci --force
     # - name: Run test
     #   working-directory: ./src/Frontend
     #   run: npm test
