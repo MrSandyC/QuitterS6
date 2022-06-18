@@ -23,6 +23,9 @@ spec:
             cpu: 500m
         ports:
         - containerPort: 5003
+        envFrom:
+        - configMapRef:
+            name: follow-env
 ---
 apiVersion: v1
 kind: Service
