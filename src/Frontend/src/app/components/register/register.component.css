@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+a {
+  color: #ffffff
+}
+
 .user-info-form {
   justify-content: space-between;
 }

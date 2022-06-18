@@ -4,7 +4,11 @@
   <mat-stepper #stepper class="register-stepper">
     <mat-step [stepControl]="accountForm">
       <form [formGroup]="accountForm">
-        <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">Enter your username and nickname</label></ng-template>
+        <ng-template matStepLabel class="register-white" [color]="white"
+          ><label class="register-white"
+            >Enter your username and nickname</label
+          ></ng-template
+        >
         <mat-form-field appearance="fill">
           <mat-label class="register-white">Username</mat-label>
           <input
@@ -31,7 +35,9 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="optionalForm" label="More information">
-      <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">More information</label></ng-template>
+      <ng-template matStepLabel class="register-white" [color]="white"
+        ><label class="register-white">More information</label></ng-template
+      >
       <form [formGroup]="optionalForm">
         <mat-form-field appearance="fill">
           <mat-label class="register-white">Description</mat-label>
@@ -52,6 +58,13 @@
             placeholder="Example; The forest"
           />
         </mat-form-field>
+        <mat-checkbox class="checkbox-required" required formControlName="location"
+          >I have read the <a href="/terms">Terms & Condition</a></mat-checkbox
+        >
+        <mat-checkbox class="checkbox-required" required formControlName="location"
+          >I have read the <a href="/privacy">Privacy policy</a></mat-checkbox
+        >
+
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -59,7 +72,9 @@
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel class="register-white" [color]="white"><label class="register-white">Confirmation</label></ng-template>
+      <ng-template matStepLabel class="register-white" [color]="white"
+        ><label class="register-white">Confirmation</label></ng-template
+      >
       <p>Submit the information.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>

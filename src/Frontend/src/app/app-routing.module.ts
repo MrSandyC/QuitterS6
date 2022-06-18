@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './login/login.component';
@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'terms',
+    component: TermsConditionsComponent,
+  },
+  {
+    path: 'privacy',
+    component: PrivacyPolicyComponent,
   },
   {
     path: 'register',
