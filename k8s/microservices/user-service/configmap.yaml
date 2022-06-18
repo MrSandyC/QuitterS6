@@ -1,0 +1,15 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: user-env 
+data:
+  MYSQL_HOST: mysql
+  MYSQL_PORT: 3306
+  mysql_username: root
+  mysql_password: password
+  database: quitter-follow
+  RABBITMQ_DEFAULT_USER: Sander
+  RABBITMQ_DEFAULT_PASS: QuitterDev
+  RABBITMQ_HOST: rabbitmq-clusterip-srv
+  RABBITMQ_FOLLOW_QUEUE: follow-queue
+  
