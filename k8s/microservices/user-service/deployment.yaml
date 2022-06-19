@@ -16,13 +16,16 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: quittercr.azurecr.io/user-service:v0.4.0
+        image: quittercr.azurecr.io/user-service:v0.2.0
         resources:
           limits:
             memory: 500Mi
             cpu: 500m
         ports:
         - containerPort: 5002
+        envFrom:
+        - configMapRef:
+            name: user-env
 ---
 apiVersion: v1
 kind: Service

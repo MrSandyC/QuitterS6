@@ -16,13 +16,16 @@ spec:
     spec:
       containers:
       - name: follow-service
-        image: quittercr.azurecr.io/follow-service:v0.4.0
+        image: quittercr.azurecr.io/follow-service:v0.2.5
         resources:
           limits:
             memory: 500Mi
             cpu: 500m
         ports:
         - containerPort: 5003
+        envFrom:
+        - configMapRef:
+            name: follow-env
 ---
 apiVersion: v1
 kind: Service
