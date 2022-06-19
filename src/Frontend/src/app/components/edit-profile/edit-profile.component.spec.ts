@@ -13,7 +13,7 @@ describe('EditProfileComponent', () => {
       imports: [
         MatInputModule,
         AuthService
-      ]
+      ],
       declarations: [ EditProfileComponent ]
     })
     .compileComponents();

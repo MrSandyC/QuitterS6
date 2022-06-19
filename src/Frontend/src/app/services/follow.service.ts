@@ -5,11 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
 const baseUrl = `${environment.apiURL}/follow`;
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +15,6 @@ export class FollowService {
     this.auth.idTokenClaims$.subscribe((claims) => {
       console.log(claims?.__raw);
       this.token = claims?.__raw;
-      httpOptions.headers.set('Authorization', `Bearer ${claims?.__raw}`);
     });
   }
 
