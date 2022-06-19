@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:4200',
-      'https://salmon-dune-0e7191003.1.azurestaticapps.net/home',
+      'https://salmon-dune-0e7191003.1.azurestaticapps.net',
     ],
     credentials: true,
   });

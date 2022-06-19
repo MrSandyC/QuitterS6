@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/models/user';
 import { FollowService } from 'src/app/services/follow.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { FollowService } from 'src/app/services/follow.service';
 })
 export class FollowerComponent implements OnInit {
   username!: string;
-  user!: User;
+  user!: any;
   constructor(private route: ActivatedRoute, private followService : FollowService) {
     this.username = this.route.snapshot.params['username'];
     console.log(this.route.snapshot.params['username']);

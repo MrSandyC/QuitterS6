@@ -1,4 +1,5 @@
 import { IsNumberString, IsString, Length } from 'class-validator';
+import { User } from 'src/user/entities/user.entity';
 
 export class Queet {
   @IsNumberString()
@@ -8,6 +9,5 @@ export class Queet {
   @Length(0, 144)
   message: string;
 
-  @IsNumberString()
-  userId: number;
+  user: User;
 }
