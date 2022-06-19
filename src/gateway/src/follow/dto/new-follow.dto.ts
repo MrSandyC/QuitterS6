@@ -1,9 +1,9 @@
-import { IsNumberString } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class NewFollowerRequest {
-  @IsNumberString()
+  @IsNumber()
   follower: number;
 
-  @IsNumberString()
+  @IsNumber()
   following: number;
 }
