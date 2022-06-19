@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+import { User } from '../models/user';
 
 const baseUrl = `${environment.apiURL}/follow`;
 
@@ -18,22 +19,28 @@ export class FollowService {
   }
 
   followUser(followerId: number, followingId: number) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
-    });
-    return this.httpClient.post<any>(
+    const body = {
+      "follower": followerId,
+      "following": followingId,
+    }
+    return this.httpClient.post<User>(
       baseUrl,
-      { follower: followerId, following: followingId },
-      {headers: headers}
+      body,
+      httpOptions
     );
   }
 
-  fetchFollowers(userId: number) {
-    return this.httpClient.get<any>(`${baseUrl}/followers`, { params: { id: userId } });
+  fetchFollowers(username: string) {
+    const body = {
+      username: username
+    }
+    return this.httpClient.post<any>(`${baseUrl}/followers`, body, httpOptions);
   }
 
-  fetchFollowing(userId: number) {
-    return this.httpClient.get<any>(`${baseUrl}/following`, { params: { id: userId } });
+  fetchFollowing(username: string) {
+    const body = {
+      username: username
+    }
+    return this.httpClient.post<any>(`${baseUrl}/following`, body, httpOptions);
   }
 }

@@ -4,11 +4,11 @@ import { User } from 'src/app/models/user';
 import { FollowService } from 'src/app/services/follow.service';
 
 @Component({
-  selector: 'app-follower',
-  templateUrl: './follower.component.html',
-  styleUrls: ['./follower.component.css'],
+  selector: 'app-following',
+  templateUrl: './following.component.html',
+  styleUrls: ['./following.component.css']
 })
-export class FollowerComponent implements OnInit {
+export class FollowingComponent implements OnInit {
   username!: string;
   user!: User;
   constructor(private route: ActivatedRoute, private followService : FollowService) {
@@ -17,11 +17,12 @@ export class FollowerComponent implements OnInit {
     this.followService.fetchFollowers(this.username).pipe().subscribe((val) => {
       if(val) {
         this.user = val;
+        console.log(val)
       }
     })
   }
 
   ngOnInit(): void {
-    // to be filled with content
   }
+
 }

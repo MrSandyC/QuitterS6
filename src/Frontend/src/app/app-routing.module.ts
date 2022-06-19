@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
+import { FollowingComponent } from './components/following/following.component';
 import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
     path: ':username/followers',
     component: FollowerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: ':username/following',
+    component: FollowingComponent,
     canActivate: [AuthGuard],
   },
   {

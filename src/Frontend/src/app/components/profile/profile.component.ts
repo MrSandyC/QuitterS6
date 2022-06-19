@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '@auth0/auth0-angular';
 import { first } from 'rxjs';
 import { Queet } from 'src/app/models/queet';
+import { FollowService } from 'src/app/services/follow.service';
 import { QueetService } from 'src/app/services/queet.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,13 +16,15 @@ export class ProfileComponent implements OnInit {
   profileJson: string = '';
   queets!: Queet[];
   user!: User;
-  authUser!: unknown;
+  authUser!: string;
+  id!: number;
   constructor(
     public auth: AuthService,
     public queetService: QueetService,
     private route: ActivatedRoute,
     private router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public followService: FollowService
   ) {
     this.auth.user$.subscribe((profile) => (this.authUser = profile!.sub!));
     this.userService
@@ -36,16 +39,22 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  async ngOnInit(): Promise<void> {
-    // await this.queetService
-    //   .fetchQueetsByUserId(this.user['id'])
-    //   .pipe(first())
-    //   .subscribe((val) => (this.queets = val));
-    console.log(this.route.snapshot.params['username']);
-  }
+  async ngOnInit(): Promise<void> {}
 
-  followUser(): void {
+  async followUser(): Promise<void> {
     console.log('followed user');
+    console.log(this.user['id']);
+    let id: number;
+    this.userService
+      .fetchUserByToken(this.authUser)
+      .pipe(first())
+      .subscribe((val) => {
+        this.id = val.id!;
+        this.followService
+      .followUser(this.id, this.user['id'])
+      .pipe(first())
+      .subscribe((val) => console.log(val));
+      });
   }
 
   redirectToEdit(): void {

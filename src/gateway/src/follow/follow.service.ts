@@ -16,11 +16,11 @@ export class FollowService {
     this.followClient.emit('follow:unfollow-user', followRequest);
   }
 
-  fetchFollowers(userId: number) {
-    return this.followClient.send('follow:find-followers-for-user', userId);
+  fetchFollowers(username: string) {
+    return this.followClient.send('follow:find-followers-for-user', username);
   }
 
-  fetchFollowingUsers(id: number) {
-    return this.followClient.send('follow:find-following-for-user', id);
+  fetchFollowingUsers(username: string) {
+    return this.followClient.send('follow:find-following-for-user', username);
   }
 }

@@ -31,6 +31,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
 import { environment } from 'src/environments/environment';
+import { FollowingComponent } from './components/following/following.component';
 import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
@@ -49,6 +50,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
     RegisterComponent,
     EditProfileComponent,
     FollowerComponent,
+    FollowingComponent,
     TermsConditionsComponent,
     PrivacyPolicyComponent,
   ],

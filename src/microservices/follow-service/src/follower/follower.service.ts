@@ -41,15 +41,17 @@ export class FollowerService {
     return this.followRepository.save(user);
   }
 
-  async followersByUserId(userId: any) {
-    return this.followRepository.findOneOrFail(userId, {
+  async followersByUsername(username: string) {
+    return this.followRepository.findOneOrFail({
+      where: username,
       relations: ['followers'],
     });
   }
 
-  async followingByUserId(userId: any) {
-    return this.followRepository.findOneOrFail(userId, {
-      relations: ['following'],
+  async followingByUsername(username: string) {
+    return this.followRepository.findOneOrFail({
+      where: username,
+      relations: ['followers'],
     });
   }
 

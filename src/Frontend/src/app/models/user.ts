@@ -18,4 +18,8 @@ export class User {
   profileUri!: string;
 
   queets?: Queet[];
+
+  followers?: User[];
+
+  following?: User[];
 }
