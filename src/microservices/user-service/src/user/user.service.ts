@@ -34,7 +34,7 @@ export class UserService {
 
   fetchUserByAuth0token(auth0id: string) {
     return this.userRepository
-      .findOne({
+      .findOneOrFail({
         where: {
           auth0id: auth0id,
         },
