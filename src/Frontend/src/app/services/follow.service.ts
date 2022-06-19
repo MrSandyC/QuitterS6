@@ -18,7 +18,7 @@ export class FollowService {
   }
 
   followUser(followerId: number, followingId: number) {
-    var headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     });

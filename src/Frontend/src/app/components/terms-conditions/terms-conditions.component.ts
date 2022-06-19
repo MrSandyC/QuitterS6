@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terms-conditions.component.css']
 })
 export class TermsConditionsComponent implements OnInit {
-
-  constructor() { }
+  number: number;
+  constructor() {
+    this.number = 1
+   }
 
   ngOnInit(): void {
+    this.number = 2;
   }
 
 }
