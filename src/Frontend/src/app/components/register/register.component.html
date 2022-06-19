@@ -58,13 +58,6 @@
             placeholder="Example; The forest"
           />
         </mat-form-field>
-        <mat-checkbox class="checkbox-required" required formControlName="location"
-          >I have read the <a href="/terms">Terms & Condition</a></mat-checkbox
-        >
-        <mat-checkbox class="checkbox-required" required formControlName="location"
-          >I have read the <a href="/privacy">Privacy policy</a></mat-checkbox
-        >
-
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -76,6 +69,7 @@
         ><label class="register-white">Confirmation</label></ng-template
       >
       <p>Submit the information.</p>
+      <p><strong>By submitting you agree with the <a href="/terms">Terms & Condition</a> and the <a href="/privacy">Privacy policy</a></strong></p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="submitUserInformation()">Submit</button>
