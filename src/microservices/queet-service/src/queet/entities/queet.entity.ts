@@ -12,10 +12,10 @@ export class Queet {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   message: string;
 
-  @ManyToOne(() => User, (user) => user.queets)
+  @ManyToOne(() => User, (user) => user.queets, { onDelete: 'CASCADE' })
   user: User;
 
   @CreateDateColumn()

@@ -1,7 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { map } from 'rxjs';
 import { RegisterUserRequest } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -29,11 +31,14 @@ export class UserService {
   }
 
   removeUser(id: number) {
+    this.queetClient.emit('user:remove', id);
+    this.followClient.emit('user:remove', id);
     return this.userClient.emit('user:remove', id);
   }
 
   updateUser(updateUserDto: UpdateUserDto) {
     this.queetClient.emit('user:update', updateUserDto);
+    this.followClient.emit('user:update', updateUserDto);
     return this.userClient.emit('user:update', updateUserDto);
   }
 

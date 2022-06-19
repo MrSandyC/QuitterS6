@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateQueetDto } from './dto/create-queet.dto';
 import { UpdateQueetDto } from './dto/update-queet.dto';
@@ -31,7 +32,7 @@ export class QueetService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} queet`;
+    return this.queetRepository.delete(id);
   }
 
   fetchQueetsByProfile(id: number) {

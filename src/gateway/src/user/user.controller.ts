@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { Payload } from '@nestjs/microservices';
 import { RegisterUserRequest } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -33,6 +34,21 @@ export class UserController {
   @Post('/byAuth0')
   fetchUserByAuth0(@Body() body) {
     return this.userService.fetchUserByAuth0token(body.auth0id);
+  }
+
+  @Delete('/byAuth0')
+  deleteAllUserData(@Body() body) {
+    let user: User;
+    const data = this.userService.checkIfUserExists(body.auth0id);
+    this.userService
+      .checkIfUserExists(body.auth0id)
+      .subscribe((value: User) => {
+        this.userService.removeUser(value.id);
+      });
+    // data.subscribe((value: User) => {
+    //   user = value;
+    // });
+    console.log(user);
   }
 
   @Put()
