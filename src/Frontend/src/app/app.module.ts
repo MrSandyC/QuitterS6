@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeaderComponent } from './header/header.component';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
@@ -30,6 +31,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FollowerComponent } from './components/follower/follower.component';
 import { environment } from 'src/environments/environment';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 // TODO: https://auth0.com/blog/complete-guide-to-angular-user-authentication/#Retrieving-User-Information
 @NgModule({
@@ -46,6 +49,8 @@ import { environment } from 'src/environments/environment';
     RegisterComponent,
     EditProfileComponent,
     FollowerComponent,
+    TermsConditionsComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     LayoutModule,
+    MatCheckboxModule,
     MatStepperModule,
     MatToolbarModule,
     MatButtonModule,

@@ -17,6 +17,10 @@ const httpOptions = {
 })
 export class QueetService {
   token!: any;
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.token}`
+  });
   constructor(private httpClient: HttpClient, private auth: AuthService) {
     this.auth.idTokenClaims$.subscribe((claims) => {
       console.log(claims?.__raw);
@@ -26,9 +30,7 @@ export class QueetService {
   }
 
   fetchQueets() {
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.token}`);
-    return this.httpClient.get<Queet[]>(baseUrl, {headers});
+    return this.httpClient.get<Queet[]>(baseUrl, {headers: this.headers});
   }
 
   fetchQueetsByUserId(id: number) {
